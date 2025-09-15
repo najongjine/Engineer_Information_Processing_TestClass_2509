@@ -79,11 +79,17 @@ int main() {
     */
     // c,java 에선 소수점만 담음
     float f1=3.14;
-    printf(" float size: %d \n",sizeof(f1));
+   
     printf(" f1: %f \n",f1);
     // c,java 언어에서 int 는 정수만 담음
     int a2=1/2;
     printf(" a2: %d \n",a2);
+    
+    char c1='a';
+    /* 이런건 시험에 밥먹듯이 나오지만
+    나중에 설명해 드릴게요*/
+    c1 = 66;
+     printf(" c1 : %c \n",c1);
 
     return 0;
 }
