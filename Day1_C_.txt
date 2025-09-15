@@ -51,6 +51,7 @@ int main() {
     */
     //int b;
     b=22;
+    printf("b의 값: %d \n",b);
      
      /*
      사람이 메모리 주소를 직접 쓰면서 접근하는건 
@@ -59,13 +60,30 @@ int main() {
      */
     
     int c;
-    /*
+    printf("초기 c의 값: %d \n",c);
+    
+     /*
     c 라는 변수의 메모리 공간에
     b 라는 변수의 메모레이 있는 값을
     c 에 저장해 주세요
     * 대입연산
     */
     c = b;
+    printf("c의 값: %d \n",c);
+    
+    /*
+    c 언어의 자료형
+    int - 숫자
+    float - 소수점
+    char - 문자
+    */
+    // c,java 에선 소수점만 담음
+    float f1=3.14;
+    printf(" float size: %d \n",sizeof(f1));
+    printf(" f1: %f \n",f1);
+    // c,java 언어에서 int 는 정수만 담음
+    int a2=1/2;
+    printf(" a2: %d \n",a2);
 
     return 0;
 }
