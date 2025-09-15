@@ -90,6 +90,36 @@ int main() {
     나중에 설명해 드릴게요*/
     c1 = 66;
      printf(" c1 : %c \n",c1);
-
+     
+    /* printf 설명
+    %d 는 정수만 표현 가능
+    printf("%d", a);
+    
+    %f 는 소수점만 표현 가능
+    printf("%f\n", f1);
+    
+    %c 는 문자만 표현가능
+    printf("%c\n", c1);
+    
+    %s 는 문자열만 표현 가능
+    printf("%s\n", "asvbfbf");
+    
+    c 언어에서 없는 자료형이 하나 있어요
+    boolean 자료형이 없어요
+    true, false
+    c 언어에서 0은 false
+    0 의외에는 true 입니다
+    
+    c 언어에서 boolean 권장 표현방식
+    true == 1
+    false == 0
+   
+    */
+    
+    // 논리 연산에선 0 이 아니니 true
+    a=9909; 
+    // 논리 연산에선 0 이 아니니 true
+    b=-91;
+    printf("a&&b: %d",a&&b);
     return 0;
 }
