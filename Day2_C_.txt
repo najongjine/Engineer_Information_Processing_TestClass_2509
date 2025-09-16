@@ -43,12 +43,27 @@ printf("a/b:%f \n",a/(float)b);
 */
 printf("a/b: %d \n", a%b);
 
-int t1=1;
-int t2=1;
+int t1=2;
+int t2=3;
 int f1=0;
+printf("%d \n", t1 && t2);
+printf("%d \n", t1 && f1);
+printf("%d \n",t1 || f1);
 
-char c1='a';
-printf("a: %d",c1);
+/*
+논리곱, 논리합은 2진수로 변환한후 계산이 됩니다
+2 -> 1 0
+3 -> 1 1    AND
+     1 0 
+     
+     1(2^1) 0(2^0)
+     2^0 은 없다. 그래서 0
+     2^1 은 있다. 그래서 2
+     2 + 0 = 2
+       
+*/
+printf("&: %d",t1&t2); // 2
+
 
 
     return 0;
