@@ -64,3 +64,22 @@ int main() {
     printf("doorCode: %d \n",doorCode);
     return 0;
 }
+
+
+
+int a = 5;
+int b = 10;
+// AND 연산자(&&) 예제
+if (a > 0 && b > 0) {
+printf("a와 b 모두 0보다 큽니다.\n");
+}
+// OR 연산자(||) 예제
+if (a > 20 || b > 5) {
+printf("a가 20보다 크거나 b가 5보다 큽니다.\n");
+}
+// OR 연산자(||) - 둘 다 거짓인 경우
+if (a > 20 || b > 15) {
+printf("이 메시지는 출력되지 않습니다.\n");
+} else {
+printf("a가 20보다 크지 않고 b도 15보다 크지 않습니다.\n");
+}
