@@ -1,0 +1,11 @@
+loop 의 뜻은 반복
+컴퓨터는 멍청하니 반복을 하면 반드시 패턴이 보여요
+
+c,java 언어 loop 종류는 
+while(), do while(), for()
+
+java +  
+foreach
+
+loop 는 조건을 만족해야 반복수행,
+조건을 만족 못하면 빠져 나와요.
