@@ -1,11 +1,11 @@
-// Set the maximum possible score in the game to 500
-int maxScore = 500;
+if (조건) {
+      printf("조건 만족");
+    }
 
-// The actual score of the user
-int userScore = 423;
+if문은 () 안에 true, false, 숫자, 문자, 문자열
+비교연산, 함수, 수학수식
+요정도만 들어갈수 있어요
 
-// Calculate the percantage of the user's score in relation to the maximum available score
-float percentage = (float) userScore / maxScore * 100.0;
-
-// Print the percentage
-printf("User's percentage is %.2f", percentage);
+컴퓨터는 숫자밖에 못해요
+문자, 문자열은 내부적으로 컴퓨터가 숫자로 바꿔요
+'A' = 65, 'a'=97 '0'=48
