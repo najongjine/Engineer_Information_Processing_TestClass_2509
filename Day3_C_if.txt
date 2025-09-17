@@ -88,3 +88,21 @@ printf("이 메시지는 출력되지 않습니다.\n");
 } else {
 printf("a가 20보다 크지 않고 b도 15보다 크지 않습니다.\n"); // V
 }
+
+
+int i=1;
+if(1 == i++){
+    printf("i: %d\n",i); // V
+}
+
+++i pre process
+i++ post process
+
+if(1 == ++i){
+    printf("i: %d\n",i); // X
+}
+
+
+int i=1;
+printf("i: %d\n",i++); // 1
+함수 수행 하고나서 i값 증가 시켜라
