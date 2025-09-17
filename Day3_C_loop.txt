@@ -9,3 +9,18 @@ foreach
 
 loop 는 조건을 만족해야 반복수행,
 조건을 만족 못하면 빠져 나와요.
+
+
+int i=0;
+while (i<=3) {
+    int i=0;
+    i++;
+    printf("i:%d\n",i);
+}
+메인에 있는 i랑 while안에 있는 i가 달라요
+while에서 조건을 검사고 true 가 떨어져서 while 내부로 
+진입해요.
+int i 를 선언해요
+뭐뭐뭐... 실행하고, 다시 while의 진입부로 돌아가요
+이때 while 안에있는 int i 는 사라져요
+.... 반복
