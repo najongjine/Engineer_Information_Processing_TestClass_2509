@@ -47,3 +47,20 @@ else if랑 else는 옵션
 int time = 20;
 int a= (time % 2 == 0)? 1:0;
 printf("a: %d\n",a); // 1
+
+
+
+int main() {
+    int doorCode = 1337; // main scope에 있는 변수
+    int global1=3; // main scope에 있는 변수
+
+    if (doorCode == 1337) {
+      int doorCode = 1; // if scope에 있는 변수
+      int child1=2; // if scope에 있는 변수
+      printf("global1: %d \n",global1); // 자식 scope은 부모 scope에 접근 가능함
+    } else {
+      printf("Wrong code.\nThe door remains closed.");
+    }
+    printf("doorCode: %d \n",doorCode);
+    return 0;
+}
