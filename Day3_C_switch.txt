@@ -18,3 +18,16 @@ switch는 값을 받고, 그 값이랑 똑같은 놈을 골라서 실행해요.
 이게 시험에서는 break 키워드를 누락시켜서 혼도을 줘요.
 break 키워드가 있으면 해당 case 문을 실행하고 빠져나오고
 break 키워드가 없으면 밑에 쭉 나가면서 계속 실행해요
+
+int n = 5;
+switch(n) {
+    default:
+        printf("DEFAULT\n");
+    case 5:
+        printf("FIVE\n"); // V
+        break;
+    case 6:
+        printf("SIX\n");
+        break;
+}
+default 가 먼저 등장했다고, 그게 우선시 되지는 않아요.
