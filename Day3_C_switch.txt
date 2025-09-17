@@ -1,0 +1,20 @@
+int x = 1;
+
+switch(x) {
+    case 0:
+        printf("ZERO\n");
+        break;
+    case 1:
+    case 2:
+        printf("ONE or TWO\n");
+        break;
+    case 3:
+        printf("THREE\n");
+        break;
+}
+
+스위치는 if 문이랑 비슷한데, if문은 t, f 로 치환 한다면,
+switch는 값을 받고, 그 값이랑 똑같은 놈을 골라서 실행해요.
+이게 시험에서는 break 키워드를 누락시켜서 혼도을 줘요.
+break 키워드가 있으면 해당 case 문을 실행하고 빠져나오고
+break 키워드가 없으면 밑에 쭉 나가면서 계속 실행해요
