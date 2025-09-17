@@ -42,3 +42,8 @@ if (time > 10) {
 if   else if   else 얘네들은 식수들이에요
 if 는 부모. if 쓸거면 if는 무조간 나와야함
 else if랑 else는 옵션
+
+
+int time = 20;
+int a= (time % 2 == 0)? 1:0;
+printf("a: %d\n",a); // 1
