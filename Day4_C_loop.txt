@@ -97,3 +97,22 @@ int main()
     }
     return 0;
 }
+짝수만 곱하기 진행
+
+
+#include <stdio.h>
+int main()
+{
+    for (int i = 2; i <= 9; i++) {
+        for (int j = 1; j <= 9; j++) {
+            if(i%2 == 1) continue;
+            printf("%d ",i * j);  X
+            printf("%d ",i * j);  X
+            printf("%d ",i * j);  X
+        }
+        printf("\n");             O
+    }
+    return 0;
+}
+continue 라는 뜻은 아래꺼 진행하지 마라({ 안에있는것만})
+
