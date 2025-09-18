@@ -52,3 +52,21 @@ int main()
 저는 b:0 입니다 
 저는 b:1 입니다 
 저는 b:2 입니다 
+
+
+#include <stdio.h>
+int main()
+{
+    for(int a=0;a<2;++a){
+        printf("저는 a:%d 입니다 \n",a);
+        for(int b=0;b<3;b++){
+            printf("저는 b:%d 입니다 \n",b);
+            break;
+        }
+    }
+    return 0;
+}
+저는 a:0 입니다 
+저는 b:0 입니다 
+저는 a:1 입니�� 
+저는 b:0 입니다 
