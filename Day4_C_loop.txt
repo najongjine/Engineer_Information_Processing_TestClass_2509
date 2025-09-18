@@ -135,3 +135,14 @@ i=3  i++
 i=4  sum=3+4 i++
 즉, 3의 배수만 빼고 나 합누적 시켜라
 
+
+int i, j;
+for(i = 1; i <= 5; i++) {
+    for(j = 1; j <= 5; j++) {
+        if(j == 3) continue;
+        if(i + j > 7) break;
+        printf("(%d,%d) ", i, j);
+    }
+    printf("\n");
+}
+
