@@ -78,7 +78,6 @@ int main()
     for(int a=2;a<=9;++a){
         for(int b=1;b<=9;b++){
             printf("a(%d) * b(%d) = %d\n",a,b,a*b);
-            break;
         }
     }
     return 0;
