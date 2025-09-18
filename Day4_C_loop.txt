@@ -82,3 +82,4 @@ int main()
     }
     return 0;
 }
+재미로 해본 구구단
