@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main() {
+    int i=0;
+    int sum=0;
+    /*
+    i=0  sum= 0 + 1(i) 왜냐면 비교연산 끝나면 ++ 되니깐  sum= 1
+    i=1 sum= 1+2(i++ 한거)  sum= 3
+    i=2 sum=3+3(i++ 한거) sum= 6
+    i=3 조건은 만족 안했는데 ++ 은 있다
+    */
+    while(i++  < 3){
+        sum+=i;
+    }
+    printf("i:%d\n",i); //4
+    printf("sum:%d\n",sum); //6
+
+    return 0;
+}
+
+#include <stdio.h>
+
+int main()
+{
+    for(int i=0;i<2;++i){
+        printf("저는 i:%d 입니다 \n",i);
+        for(int j=0;j<3;j++){
+            printf("저는 j:%d 입니다 \n",j);
+        }
+    }
+
+    return 0;
+}
