@@ -40,7 +40,7 @@ float avg, sum = 0;
 int i;
 
 // Get the length of the array
-int length = sizeof(ages) / sizeof(ages[0]);
+int length = sizeof(ages) / sizeof(ages[0]); // 8
 
 // Loop through the elements of the array
 for (i = 0; i < length; i++) {
@@ -48,7 +48,48 @@ for (i = 0; i < length; i++) {
 }
 
 // Calculate the average by dividing the sum by the length
-avg = sum / length;
+avg = sum / length; // 326 / 8
 
 // Print the average
-printf("The average age is: %.2f", avg);
+printf("The average age is: %.2f", avg); // 40.75
+
+20 + 22+ 18+ 35+ 48+ 26+ 87+ 70
+
+
+
+
+
+#include <stdio.h>
+
+int main()
+{
+    int myAge = 43;     
+    int* ptr = &myAge;// myAge의 주소를 저장
+    printf("%d\n", myAge);
+
+    // & 는 변수의 주소
+    printf("%p\n", &myAge);
+    printf("%p\n", ptr);
+    
+    myAge+=1;
+    /*
+    a*b 랑 
+    a* *b 랑 햇갈려요
+    쉽고 빠르게 문제푸는 방법은, c언에서 주소가 어떻게 됬어요 그런 안물어봐요
+    그냥 포인터 변수가 가르키는 값을 출력하면 된다고요
+    */
+    printf("*ptr : %d\n", *ptr);
+
+    return 0;
+}
+
+
+
+char mystring2[] = "hello";     // 문자열 배열 (수정 가능)
+char *mystring = mystring2;         // 문자열 상수 (읽기 전용)
+
+*(mystring2 + 1) = 'a';         // ✅ 가능
+
+printf("mystring: %s\n", mystring);  // → "hallo"
+
+return 0;
