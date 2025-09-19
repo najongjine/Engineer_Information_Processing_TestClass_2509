@@ -1,0 +1,57 @@
+// 함수의 기본 형태
+void 함수이름(){
+    // 내용 어쩌구 저쩌구
+}
+
+void 함수이름2(int a, int b,int c){
+    printf();
+}
+
+int 함수이름2(int a, int b){
+    return a+b;
+}
+
+
+
+
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+int test1(){
+    printf("test1 함수에요\n");
+}
+void test2(int a, int b){
+    printf("%d\n",a+b);
+}
+int test3(int a, int b){
+    a++;
+    b++;
+    return a+b;
+}
+int main()
+{
+    int a=1;
+    int b=2;
+    
+    /*test3 기계가 a,b 를 받아서 + 를 하고 값을 퉤 뱉어요
+    그걸 data에 받아줘야 test3 의 리턴값이 안날라가요
+
+    main의 있는 a,b와 test3 에 있는 a,b는 달라요. scope이({ } 바구니) 달라요
+    서로 영역이 달라요
+    main에 있는 a,b 를 test3 한테 줄때는 ctrl+c, ctrl+v 해서 주는 거에요
+    */
+    int data=test3(a,b);
+    printf("data: %d \n",data);
+    printf("main a: %d \t b: %d \n",a,b);
+
+    return 0;
+}
+
+
