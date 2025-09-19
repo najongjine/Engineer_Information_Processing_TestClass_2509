@@ -1,0 +1,21 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    //                 0   1   2    3
+    int myNumbers[] = {25, 50, 75, 100};
+
+    /*
+    c 언어의 문자열은 보이지는 않지만 \0 요게 숨어있어요
+    배열은 포인터와 굉장이 연관이 깊어요.
+    배열은 연속된 공간을 차지하고, 배열의 변수의 값은, 메모리 주소를 가지고 있어요
+    배열의 변수는 첫번째 원소의 주소를 가지고 있어요.
+    시험 문제에선, 절대로 주소값 물어보는거 안나와요
+    */
+    char myString[] = "abc"; //myString2 랑 같아요
+    char myString2[]={'a','b','c','\0'}; // myString 랑 같아요
+    printf("sizeof myString2: %d \n",sizeof(myString2));//4
+    printf("myString : %s \n",myString); // 문자열 보여줄땐 %s
+
+    return 0;
+}
