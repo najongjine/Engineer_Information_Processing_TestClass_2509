@@ -1,0 +1,30 @@
+package com.itg;
+
+public class Test01 {
+	public static void main(String[] args) {
+		// 타입
+		/*
+		 * 여러줄 주석
+		 * 주석 comment
+		 */
+//		주석 단축키는 control+slash
+		//정수 Integer
+		byte a=120;
+		short b=512;
+		int c = 15642;
+		long d = 54546585454L;
+		a=(byte)150;
+		System.out.println(a);
+		char aa = 'a'+1;
+		int bb = 97+1;
+		System.out.println((byte)aa);
+		System.out.println((char)bb);
+		boolean ab = true;
+		boolean ac = false;
+		float ad = 35.214f;
+		double af = 35.214;
+		
+		
+		
+	}
+}
