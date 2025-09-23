@@ -50,3 +50,25 @@ printf(“%d\n”, &number);
 
 /* pointer 변수가 가르키는 진짜 값을 보여주기 */
 printf(“%d\n”, *pointer);
+
+
+
+
+int num = 42;
+char str[] = "Hello";
+int arr[] = {1, 2, 3, 4, 5};
+
+/* 배열과 포인터는 결국 비슷한 놈이지만,
+차이점은 배열은 주소값을 변경할수 없고, 포인터는 주소값을 변경할수 있다 */
+int *ptr = &num;
+ptr= arr;
+
+printf("%d\n", &num);
+printf("%d\n", *ptr);
+printf("%s\n", str);
+
+// arr[0], *ptr 이거는 같다
+printf("%d\n", arr[0]);
+printf("%d\n", *ptr);
+
+return 0;
