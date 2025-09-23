@@ -35,3 +35,30 @@ s2.myNum=1;
 
 printf("s1.myNum: %d \n",s1.myNum); //0
 printf("s2.myNum: %d \n",s2.myNum); //1
+
+
+
+
+
+
+#include <stdio.h>
+
+struct Car {
+  char brand[50];
+  int year;
+};
+
+int main() {
+    struct Car car = {"Toyota", 2020};
+
+    struct Car *ptr = &car;
+    
+    /* 그냥 평범한 struct 변수면 . 찍어서 속성에 접근하면 됨 */
+    car.year;
+    
+    /* 포인터 struct 이면 -> 써서 속성에 접근하면 됨 */
+    printf("Brand: %s\n", ptr->brand);
+    printf("Year: %d\n", ptr->year);
+
+    return 0;
+}
