@@ -4,3 +4,15 @@ free 는 메모리 동적 할당한거 해제 해주는거
 
 그냥 array 사이즈 수동으로 설정하거나, array 사이즈 변경할때
 쓰는 키워드
+
+
+그냥 arr[10] 한거랑 malloc 써서 한거랑 똑같아요
+//int arr[10];
+int *arr = (int*)malloc(10 * sizeof(int));
+
+for(int a=0;a<10;a++){
+    arr[a]=a;
+}
+for(int a=0;a<10;a++){
+    printf("arr[%d]:%d \n",a,arr[a]);
+}
