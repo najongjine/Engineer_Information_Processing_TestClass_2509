@@ -1,4 +1,4 @@
-java에서 new 랑 비슷
+mallo 은 java에서 new 랑 비슷
 메모리 동적 할당
 free 는 메모리 동적 할당한거 해제 해주는거
 
