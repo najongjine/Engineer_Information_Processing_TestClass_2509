@@ -72,3 +72,19 @@ printf("%d\n", arr[0]);
 printf("%d\n", *ptr);
 
 return 0;
+
+
+포인터가 int 같은 단일 데이터가 아닐경우,
+포인터나 배열이나 비슷하다
+아래 코드는 포인터도 배열같이 써먹고, 배열도 포인터같이 써먹을수 있다는 예제이다
+char str[] = "Hello";
+char *ptr_a = str;
+char **ptr_b = &ptr_a; // 이중 포인터
+printf("%c\n", str[1]); // e
+printf("%c\n", *(ptr_a + 1)); // e
+printf("%c\n", ptr_a[1]); // e
+printf("%c\n", *(*ptr_b + 1)); // e
+printf("%c\n", (*ptr_b)[1]); // e
+char str2[] = "World";
+*ptr_b = str2;
+printf("%c\n", ptr_a[1]); // o
