@@ -35,3 +35,18 @@ int main() {
     return 0;
 }
 
+
+int number = 42;
+
+/* pointer 변수에 number의 주소 저장하기 */
+int *pointer = &number
+int c=1;
+
+/* number 와 c 를 2진수로 변환한후, AND 연산하기 */
+int a= number & c;
+
+/* number 변수의 주소를 뽑기 */
+printf(“%d\n”, &number);
+
+/* pointer 변수가 가르키는 진짜 값을 보여주기 */
+printf(“%d\n”, *pointer);
