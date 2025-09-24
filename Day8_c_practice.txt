@@ -12,3 +12,24 @@ int main(void) {
     acc(-2);
     return 0;
 }
+
+
+
+
+
+#include <stdio.h>
+
+int main(void) {
+    int a[2][3] = { {1,2,3}, {4,5,6} };
+    int (*p)[3] = a;          // "요소가 int[3]인 배열에 대한 포인터"
+
+    char [] a="abc";
+    char * ptr_a=a;
+
+    printf("%d ", *(*p + 2)); // a[0][2] // 3
+    p++;                      // 이제 p는 a[1]을 가리킴 
+    printf("%d ", (*p)[0]);   // a[1][0] // 4
+    printf("%d ", *(*(a+1)+1)); // a[1][1] // 5
+    printf("%d",   1[a[1]]);    // a[1][1] (인덱싱 교환법칙) // 5
+    return 0;
+}
