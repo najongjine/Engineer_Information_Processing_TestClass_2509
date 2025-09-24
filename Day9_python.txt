@@ -85,6 +85,25 @@ thislist = ["apple", "banana", "cherry", "orange", "kiwi"]
 thislist[1:3] = ["blackcurrant", "watermelon"]
 print(thislist) # ['apple', 'blackcurrant', 'watermelon', 'orange', 'kiwi']
 
+thislist = ["apple", "banana", "cherry"]
+# 자바는 list 끝에만 원소추가가 되는데, 파이썬은 아무대나 막 할수 있데요
+thislist.insert(1, "watermelon")
+print(thislist) # ['apple', 'watermelon', 'banana', 'cherry']
+
+thislist = ["apple", "banana", "cherry"]
+# 자료구조 stack pop 생각하면 안됨. 파이썬은 pop() 이건 list에서 맨 마지막꺼 제거
+# pop(1) 이러면 index 1 번째거 제거 
+# 그리고 pop은 제거하면서 값을 퉤 뱉음. 그래서 변수에 담거나 loop에서 재사용 가능함
+data=thislist.pop(1)
+print(thislist) # 
+thislist = ["apple", "banana", "cherry"]
+data=thislist.pop(1)
+print(thislist)
+
+thislist = ["apple", "banana", "cherry"]
+data=thislist.pop(1)
+print(thislist) # ['apple', 'cherry']
+
 
 
 a= {1, 2, 3} # set. 중복을 허용하지 않는다, 순서가 없다
