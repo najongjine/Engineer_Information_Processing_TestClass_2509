@@ -74,6 +74,9 @@ thislist = ["apple", "banana", "cherry"]
 # 파이썬은 list 를 뒤에서부터도 접근할수 있어요
 print(thislist[-1])
 
+thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+print(thislist[2:-2]) # ['cherry', 'orange', 'kiwi']
+
 
 
 a= {1, 2, 3} # set. 중복을 허용하지 않는다, 순서가 없다
