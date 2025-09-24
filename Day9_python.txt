@@ -43,6 +43,16 @@ txt = "I like bananas"
 x = txt.replace("a", "e")
 print(x) # I like benenes
 
+txt = "50"
+# 3 자리로 맞춰라. 근데 원본 데이터가 2자리면 왼쪽을 0으로 채워라
+x = txt.zfill(3)
+print(x) # 050
+
+txt = "5000"
+# zfill은 원본 데이터 크기가 매개변수보다 더 크다고, 데이터를 짤라먹진 않아요
+x = txt.zfill(3)
+print(x) # 5000
+
 
 
 a= True # boolean
