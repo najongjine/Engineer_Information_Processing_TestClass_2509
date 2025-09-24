@@ -7,11 +7,19 @@ a=45 # int
 a="hello" # 문자열
 
 python string Slicing
-b = "Hello, World!"
+b = "Hello,"
 print(b[2:5]) # llo
 print(b[0:2]) # He
 print(b[:2]) # He
+print(b[3:]) # lo,
 
+a = "Hell"
+b = "o"
+c = a + b
+print(c) # 문자열은 + 기호로 붙일수 있다
+
+age = 36
+print(f"My name is John, I am {age}") # {age} 부분에 36이 쏙 들어가요
 
 
 a= True # boolean
