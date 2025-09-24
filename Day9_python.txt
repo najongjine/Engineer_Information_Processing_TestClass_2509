@@ -77,6 +77,10 @@ print(thislist[-1])
 thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
 print(thislist[2:-2]) # ['cherry', 'orange', 'kiwi']
 
+thislist = ["apple", "banana", "cherry"]
+if "apple" in thislist:
+  print("Yes, 'apple' is in the fruits list")
+
 
 
 a= {1, 2, 3} # set. 중복을 허용하지 않는다, 순서가 없다
