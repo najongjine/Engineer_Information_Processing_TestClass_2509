@@ -25,6 +25,10 @@ txt = "We are the so-called \"Vikings\" from the north." # 문자열 안에 " �
 txt = "I love apples, apple are my favorite fruit"
 x = txt.count("apple") # txt 문자열에서 apple 이 몇번 등장했니
 
+txt = "Hello, welcome to my world."
+print(txt.find("e")) # 1
+print(txt.index("e")) # 1
+
 
 a= True # boolean
 a= 3.4 # float
