@@ -8,7 +8,9 @@ a="hello" # 문자열
 
 python string Slicing
 b = "Hello, World!"
-print(b[2:5])
+print(b[2:5]) # llo
+print(b[0:2]) # He
+print(b[:2]) # He
 
 
 
