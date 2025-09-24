@@ -1,0 +1,33 @@
+package com.itg;
+public class Test03 {
+	public static void main(String[] args) {
+		int j;
+		int i=0;
+		for(;true;) {			
+			i++;
+			System.out.print("1");	
+			if(i>10)break;
+		}
+		System.out.println();
+		System.out.println(i);
+		for (int k=0;k<10;k++) {
+			System.out.print(k+1);
+		}
+		System.out.println();
+		// 2차원 루프문장(반복문장)
+		for(int e=0;e<10;e++) {//지구
+			System.out.println(e+1+"년도");
+			for(int m=0;m<365;m++) {
+				System.out.print(m+1+"일째,");				
+			}
+			System.out.println();
+		}
+		for(int row=1;row<10;row++) {
+			for(int col=2;col<10;col++) {
+				System.out.print(col+"X"+row+"="+col*row+"\t");
+			}
+			System.out.println();
+		}
+		
+	}
+}
