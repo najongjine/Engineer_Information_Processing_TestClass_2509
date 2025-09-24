@@ -29,6 +29,21 @@ txt = "Hello, welcome to my world."
 print(txt.find("e")) # 1
 print(txt.index("e")) # 1
 
+myTuple = ("John", "Peter", "Vicky")
+x = "#".join(myTuple)
+print(x) # John#Peter#Vicky
+
+txt = "I like bananas"
+# replace 뜻이 바꾸다 라는 뜻. 즉, 이 코드는 bananas 를 apples로 바꿔라
+x = txt.replace("bananas", "apples")
+print(x) # I like apples
+
+txt = "I like bananas"
+# a 라는걸 e로 싹 바꿔라
+x = txt.replace("a", "e")
+print(x) # I like benenes
+
+
 
 a= True # boolean
 a= 3.4 # float
