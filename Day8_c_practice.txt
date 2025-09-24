@@ -33,3 +33,19 @@ int main(void) {
     printf("%d",   1[a[1]]);    // a[1][1] (인덱싱 교환법칙) // 5
     return 0;
 }
+
+
+
+#include <stdio.h>
+
+int main(void) {
+    unsigned char a = 0b00001101;
+    unsigned char b = 0b00000111;
+    //                          8 4 2 1
+    unsigned char x = a & b; // 0 1 0 1 = 5
+    unsigned char y = a | b; // 1 1 1 1 = 15
+    unsigned char z = a ^ b; // 1 0 1 0 = 10
+
+    printf("%d %d %d\n", x, y, z); // 5 15 10
+    return 0;
+}
