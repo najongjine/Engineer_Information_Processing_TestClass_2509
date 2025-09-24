@@ -5,6 +5,13 @@
 
 a=45 # int
 a="hello" # 문자열
+
+python string Slicing
+b = "Hello, World!"
+print(b[2:5])
+
+
+
 a= True # boolean
 a= 3.4 # float
 
