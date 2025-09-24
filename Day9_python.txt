@@ -20,6 +20,10 @@ print(c) # 문자열은 + 기호로 붙일수 있다
 
 age = 36
 print(f"My name is John, I am {age}") # {age} 부분에 36이 쏙 들어가요
+txt = "We are the so-called \"Vikings\" from the north." # 문자열 안에 " 같은거 넣고 싶을때 \ 써주면 된다
+
+txt = "I love apples, apple are my favorite fruit"
+x = txt.count("apple") # txt 문자열에서 apple 이 몇번 등장했니
 
 
 a= True # boolean
