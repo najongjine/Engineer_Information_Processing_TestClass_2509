@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+void acc(int x) {
+    /* 공용변수 */
+    static int s = 10;
+    s = s - x;
+    printf("%d ", s);
+}
+
+int main(void) {
+    for (int i = 1; i <= 3; i++) acc(i);
+    acc(-2);
+    return 0;
+}
