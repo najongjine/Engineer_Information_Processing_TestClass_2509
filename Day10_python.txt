@@ -62,3 +62,40 @@ thislist2[0]="dog"
 print(f"thislist: {thislist}")
 print(f"thislist2: {thislist2}")
 
+
+"""
+thislist.copy(), list(thislist), mylist = thislist[:]
+이런식으로 하면 list 참조가 아니라 값 복사가 되요
+"""
+thislist = ["apple", "banana", "cherry"]
+mylist = thislist.copy()
+mylist = list(thislist)
+mylist = thislist[:]
+print(mylist)
+
+
+# 리스트 합치는 방법
+list1 = ["a", "b", "c"]
+list2 = [1, 2, 3]
+list3 = list1 + list2
+print(list3) # ['a', 'b', 'c', 1, 2, 3]
+
+
+# dictionary. hashing 기법을 사용해요
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+print(thisdict["brand"]) # Ford
+
+
+"""
+파이썬은 scope 개념이 함수빼고 없어요
+"""
+a = 33
+b = 200
+if b > a:
+  a=9
+  print("b is greater than a") # b is greater than a
+print(f"a: {a}") # a: 9
