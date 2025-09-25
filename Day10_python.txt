@@ -3,3 +3,16 @@ thislist = ["apple", "banana", "cherry"]
 # list에 있는 원소가 순서대로 x에 담겨요
 for x in thislist:
   print(x)
+
+thislist = ["apple", "banana", "cherry"]
+# 0 ~ 3
+for i in range(len(thislist)):
+  print(thislist[i])
+
+
+thislist = ["apple", "banana", "cherry"]
+"""
+파이썬이 어려운 이유중 하나가 list comprehension 이라는게 존재해요
+forloop, 연산, 출력 이런 잡다한걸 한줄로 할수 있어요
+"""
+[print(x) for x in thislist]
