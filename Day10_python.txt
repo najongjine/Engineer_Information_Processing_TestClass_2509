@@ -16,3 +16,37 @@ thislist = ["apple", "banana", "cherry"]
 forloop, 연산, 출력 이런 잡다한걸 한줄로 할수 있어요
 """
 [print(x) for x in thislist]
+
+
+thislist = ["orange", "mango", "kiwi", "pineapple", "banana"]
+# list 정렬
+thislist.sort()
+print(thislist) # ['banana', 'kiwi', 'mango', 'orange', 'pineapple']
+
+
+thislist = ["orange", "mango", "kiwi", "pineapple", "banana"]
+# 내림차순 정렬할땐 reverse=true 같은거 써줘요
+thislist.sort(reverse = True)
+print(thislist)
+
+
+"""
+이건 시험에 나올지 안나올지 모르겠는데,
+- 하고난 차이 순으로 정렬 하는거래요
+"""
+def myfunc(n):
+  return abs(n - 50)
+
+thislist = [100, 50, 65, 82, 23]
+thislist.sort(key = myfunc)
+print(thislist)
+
+
+"""
+대문자가 아스키 값이 더 작으니, 그냥 정렬하면 대문자가 앞으로 오는데,
+key = str.lower 옵션 주면 소문자를 앞으로 오게 해줘요
+"""
+thislist = ["banana", "Orange", "Kiwi", "cherry"]
+thislist.sort(key = str.lower)
+print(thislist)
+
