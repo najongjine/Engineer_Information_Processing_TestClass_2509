@@ -50,3 +50,15 @@ thislist = ["banana", "Orange", "Kiwi", "cherry"]
 thislist.sort(key = str.lower)
 print(thislist)
 
+
+"""
+자바, 파이썬에서 list, class 는 포인터에요
+그래서 thislist2의 원소값을 바꾸고 나면 thislist 의 원소값도 바뀌어요
+"""
+thislist = ["apple", "banana", "cherry"]
+thislist2=thislist
+
+thislist2[0]="dog"
+print(f"thislist: {thislist}")
+print(f"thislist2: {thislist2}")
+
