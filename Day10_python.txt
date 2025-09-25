@@ -108,3 +108,13 @@ True 면 왼쪽, false면 오른쪽
 a = 2
 b = 330
 print("A") if a > b else print("B")
+
+
+"""
+not True , False 값을 반전 시키는 놈이에요
+T->F, F->T
+"""
+a = 33
+b = 200
+if not a > b:
+  print("a is NOT greater than b")
