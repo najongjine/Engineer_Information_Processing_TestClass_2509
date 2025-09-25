@@ -1,0 +1,5 @@
+thislist = ["apple", "banana", "cherry"]
+# 우리가 만든 thislist 가 forloop 오른쪽에, x 는 내가만든 변수이름
+# list에 있는 원소가 순서대로 x에 담겨요
+for x in thislist:
+  print(x)
