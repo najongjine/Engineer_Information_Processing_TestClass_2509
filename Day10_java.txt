@@ -1,0 +1,95 @@
+//=================== Test03.java
+package com.itg;
+public class Test03 {
+	public static void main(String[] args) {
+		int j;
+		int i=0;
+		for(;true;) {
+			
+			i++;
+			System.out.print("1");	
+			if(i>10)break;
+		}
+		System.out.println();
+		System.out.println(i);
+		for (int k=0;k<10;k++) {
+			System.out.print(k+1);
+		}
+		System.out.println();
+		// 2차원 루프문장(반복문장)
+		for(int e=0;e<10;e++) {//지구
+			System.out.println(e+1+"년도");
+			for(int m=0;m<365;m++) {
+				System.out.print(m+1+"일째,");				
+			}
+			System.out.println();
+		}
+		for(int row=1;row<10;row++) {
+			for(int col=2;col<10;col++) {
+				System.out.print(col+"X"+row+"="+col*row+"\t");
+			}
+			System.out.println();
+		}
+		
+	}
+}
+
+//=========== Test04.java
+package com.itg;
+public class Test04 {
+	public static void main(String[] args) {
+//		*  
+//		* *  
+//		* * * 
+//		* * * *
+//		* * * * *
+		for (int i=0;i<5;i++) {
+			for(int j=0;j<i+1;j++) {
+				System.out.print("* ");
+			}
+			System.out.println();
+		}
+		System.out.println("================");
+//		* * * * * 
+//		* * * *  
+//		* * *  
+//		* * 
+//		* 
+		for (int i=0;i<5;i++) {
+			for(int j=0;j<5-i;j++) {
+				System.out.print("* ");
+			}
+			System.out.println();
+		}
+		//반복문의 제어 continue, break
+		for(int i=0;i<10;i++) {
+			if((i+1)%2==1)continue;
+			if(i+1>5)break;
+			System.out.println(i+1);
+		}
+		//배열 Array
+		int a=10;
+		int[] arr = {10,20,30,40,50};
+		System.out.println(arr[0]);
+		System.out.println(arr[3]);
+		System.out.println(arr[4]);
+		for(int i=0;i<5;i++) {
+			System.out.println(arr[i]);
+		}
+		int[] aad=arr;
+		aad[1]=200;
+		System.out.println(arr[1]);
+		//2차원 배열
+		int[][] arr2= {
+				{100,200,300},
+				{400,500,600},
+				{700,800}
+		};
+		System.out.println(arr2);
+		System.out.println(arr2[0]);
+		System.out.println(arr2[1]);
+		System.out.println(arr2[0][0]);
+		System.out.println(arr2[0][2]);
+		System.out.println(arr2[2][1]);		
+	}
+}
