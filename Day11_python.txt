@@ -25,3 +25,13 @@ print(x(5))
 
 def x(a):
 	return a + 10
+
+
+"""
+지 자리끼리 곱하는 문제
+map: forloop. 즉, numbers를 하나씩 꺼내서 lamda 넣겠다
+각 계산 결과를 list() 함수에 넣음. 그래서 결과값이 list
+"""
+numbers = [1, 2, 3, 4]
+result = list(map(lambda x: x * x, numbers))
+print(result) # [1, 4, 9, 16]
