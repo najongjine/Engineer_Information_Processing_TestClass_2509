@@ -56,3 +56,8 @@ class Person:
 p1 = Person("John", 36)
 
 print(p1)
+
+
+"""
+파이썬 class 는 override 만 신경쓰면 되요
+"""
