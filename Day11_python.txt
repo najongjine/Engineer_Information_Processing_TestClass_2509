@@ -1,0 +1,27 @@
+x = range(10)
+print(x) # range(0, 10)
+print(list(x)) # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+x = range(3, 10, 2)
+print(x) # range(3, 10, 2)
+print(list(x)) # [3, 5, 7, 9]
+
+"""
+in := 뭐뭐가 거기에 있니? 반환값은 boolean
+"""
+r = range(0, 10, 2)
+print(6 in r) # True
+print(7 in r) # False
+
+
+"""
+lamda(익명함수) := 함수를 드럽게 어렵게 만든거.
+어떻게 생겨먹은 함수인지 파악이 중요해요
+x 라는 변수에 함수를 담음. 매개변수는 a
+return 값은 a+10
+"""
+x = lambda a: a + 10
+print(x(5))
+
+def x(a):
+	return a + 10
