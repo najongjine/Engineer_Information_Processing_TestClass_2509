@@ -35,3 +35,24 @@ map: forloop. 즉, numbers를 하나씩 꺼내서 lamda 넣겠다
 numbers = [1, 2, 3, 4]
 result = list(map(lambda x: x * x, numbers))
 print(result) # [1, 4, 9, 16]
+
+
+
+
+"""
+파이썬 클래스에서 속성(클래스의 내부 변수)는 self.뭐뭐 하면 되요
+__str__ 요게 없이 print(p1) 이렇게 인스턴스를 출력하면
+주소가 나오지만, __str__ 를 쓰면 인스턴스가 가진 값들을
+볼수 있데요
+"""
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+  def __str__(self):
+    return f"{self.name}({self.age})"    
+
+p1 = Person("John", 36)
+
+print(p1)
