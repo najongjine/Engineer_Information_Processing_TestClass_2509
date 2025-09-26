@@ -76,3 +76,20 @@ def calculate_sum(data):
     return result
 
 print(calculate_sum([5, 2, 7, 4, 1, 9]))
+
+
+
+"""
+list comprehension.
+forloop + if 같은 잡다한 코드를 한줄로 만든 최악의 문법
+"""
+nums = [1, 2, 3, 4, 5, 6]
+evens = [n for n in nums if n % 2 == 0]
+print(evens)  # [2, 4, 6]
+
+"""
+1. for n in nums
+2. if n % 2 == 0
+3. n
+4. [ n... ]
+"""
