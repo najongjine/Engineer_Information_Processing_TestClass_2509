@@ -28,6 +28,14 @@ CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'aaaa';
 -- 유저이름은 앞쪽, 비밀번호는 뒤쪽
 
 
+-- 특정 DB에 대한 모든 권한 부여
+GRANT ALL PRIVILEGES ON test1.* TO 'testuser'@'localhost';
+-- GRANT ALL PRIVILEGES ON dcl_test.* TO 'testuser'
+
+-- SELECT 권한만 부여
+GRANT SELECT ON test1.* TO 'testuser'@'localhost';
+
+
 DDL -
 테이블 생성, 변경, 삭제
 
