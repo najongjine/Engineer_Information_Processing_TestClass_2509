@@ -50,7 +50,7 @@ DROP USER 'testuser'@'localhost';
 
 
 -- DB 삭제
-DROP DATABASE dcl_test;
+DROP DATABASE test1;
 -- DROP DATABASE
 
 
