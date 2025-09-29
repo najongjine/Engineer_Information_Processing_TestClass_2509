@@ -1,0 +1,51 @@
+//Test07.java
+
+package com.itg;
+
+public class Test07 {
+	public static void main(String[] args) {
+		// 다형성 - 동일한 이름의 메소드 다양한 형태로 사용된다.
+		// 메소드의 오버라이드 , 메소드의 오버로딩
+		new My().aaa(10);
+		new My().aaa('c');
+		new My().aaa(3,7);
+		System.out.println(new You().aa);
+		System.out.println(new You(1).aa);
+		System.out.println(new You(1,2).aa);
+	}	
+	
+}
+class My{
+	void aaa() {
+		System.out.println("aaa");
+	}
+	void aaa(int a) {
+		System.out.println("bbb");
+	}
+	void aaa(int b,int c) {
+		System.out.println("ccc");
+	}
+	void aaa(char a) {
+		System.out.println("ddd");
+	}
+	int aaa(int c,char a) {
+		System.out.println("eee");
+		return 0;
+	}
+}
+class You{// 생성자 메소드(객체를 초기화 시킨다.)
+	String aa="";
+	You(int a){
+		this.aa="홍길동";
+		System.out.println("You(int a)");
+	}	
+	You(){aa="조민민";System.out.println("기본생성자 호출");}
+	You(int a, int b){
+		this.aa="빅수로";
+		System.out.println("You(int a, int b)");
+	}
+	You(char a){
+		aa="망해따";
+		System.out.println("You(char a)");
+	}
+}
