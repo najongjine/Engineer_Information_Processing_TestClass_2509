@@ -35,6 +35,10 @@ GRANT ALL PRIVILEGES ON test1.* TO 'testuser'@'localhost';
 -- SELECT 권한만 부여
 GRANT SELECT ON test1.* TO 'testuser'@'localhost';
 
+-- 유저의 권한보기
+SHOW GRANTS FOR 'testuser'@'localhost';
+-- SHOW GRTANTS 까지는 공통
+
 
 DDL -
 테이블 생성, 변경, 삭제
