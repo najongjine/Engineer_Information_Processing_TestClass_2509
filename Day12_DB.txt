@@ -20,9 +20,18 @@ Oracle, mysql, mariadb, MSSQL, roach, sqlight....
 
 DCL -
 계정, 권한
+CREATE DATABASE test1; -- 데이터베이스 만들기(건물 세우기)
+ -- CREATE DATABASE 이거는 표준 SQL 외워야함
+
+CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'aaaa';
+-- CREATE USER 까지는 공통.
+-- 유저이름은 앞쪽, 비밀번호는 뒤쪽
+
 
 DDL -
 테이블 생성, 변경, 삭제
 
 DML -
 데이터 가져오기, 데이터 수정+추가 하기, 데이터 삭제하기
+
+
