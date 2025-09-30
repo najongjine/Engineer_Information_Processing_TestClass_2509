@@ -25,4 +25,11 @@ REFERENCES t_departments(dept_id) 이건 부모 테이블이 뭐고, 부모테�
 
  ON DELETE CASCADE 이건 부모 테이블 데이터가 삭제되면, 자식 테이블은 어떻게 할래?
 
- CASCADE(연쇄작용) 부모가 지워지면 자식도 같이 지운다
+ CASCADE(연쇄작용) 부모가 지워지면 자식도 같이
+
+
+
+CREATE TABLE t_test1 (
+  id INT PRIMARY KEY,
+  str VARCHAR(50) DEFAULT '' UNIQUE NOT NULL
+);
