@@ -77,3 +77,6 @@ ALTER TABLE t_test1 MODIFY price VARCHAR(50);
 
 -- 칼럼에 디폴트값 설정
 ALTER TABLE t_test1 ALTER COLUMN price SET DEFAULT 0;
+
+-- 칼럼에 유니트 넣기
+ALTER TABLE t_test1 ADD CONSTRAINT uq_price UNIQUE (price);
