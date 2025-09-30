@@ -36,3 +36,6 @@ CREATE TABLE t_test1 (
 
 -- 칼럼 삭제
 ALTER TABLE t_test1 DROP COLUMN str;
+
+-- 테이블에 칼럼 추가
+ALTER TABLE t_test1 ADD price INT;
