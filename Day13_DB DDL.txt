@@ -1,0 +1,7 @@
+DDL-
+테이블 생성, 테이블 변경, 테이블 삭제하기
+
+CREATE TABLE t_departments (
+  dept_id INT PRIMARY KEY,
+  dept_name VARCHAR(50)
+);
