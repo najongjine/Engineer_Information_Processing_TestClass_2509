@@ -5,3 +5,13 @@ CREATE TABLE t_departments (
   dept_id INT PRIMARY KEY,
   dept_name VARCHAR(50)
 );
+
+CREATE TABLE t_employees (
+  emp_id INT PRIMARY KEY,
+  name VARCHAR(50),
+  dept_id INT,
+  CONSTRAINT t_departments_fk
+  FOREIGN KEY (dept_id)
+    REFERENCES t_departments(dept_id)
+    ON DELETE CASCADE   -- 여기서 동작이 갈림!
+);
