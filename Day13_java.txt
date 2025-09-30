@@ -1,0 +1,77 @@
+//test08.java
+package com.itg;
+public class Test08 {
+	//상속 (inheritance)
+	public static void main(String[] args) {
+		AA a = new AA();
+		BB b =new BB();
+		b.a=100;
+		BB c =new BB();
+		c.a=1000;
+		b.callA();
+		c.callA();
+	}
+}
+class AA{
+	int a;
+	void callA() {
+		getA();
+	}
+	void getA() {
+		System.out.println(a);//1
+	}
+}
+class BB extends AA{
+	void getA() {
+		super.getA();
+		System.out.println("자식메소드:"+a);//2		
+	}
+}
+
+//test09.java
+package com.itg;
+public class Test09 {
+	public static void main(String[] args) {
+		Par c = new Chi();
+		Chi d = new Chi();
+		d.mydata=500;
+		Par e = d;
+		Chi f = (Chi)e;
+		System.out.println(d.mydata);
+		System.out.println(((Chi)e).mydata);
+		System.out.println(f.mydata);
+		Par pp = new Chi();
+		pp.getMydata('a');
+		pp.getMydata();
+		((Chi)pp).getMydata(10);
+		Par my = new Chi();
+		my.mydata=800;
+		my.getMydata();
+		Chi mm = (Chi)my;
+		mm.getMydata(11);
+		mm.getMydata('b');		
+	}
+}
+class Par{
+	int mydata=1000;
+	void getMydata() {
+		System.out.println("부모메소드");
+		System.out.println(mydata);
+	}
+	void getMydata(char a) {
+		System.out.println("부모메소드 1");
+		System.out.println(mydata);
+	}
+}
+class Chi extends Par{
+	int mydata;
+	void getMydata() {
+		System.out.println("자식메소드1");
+		System.out.println(mydata);
+	}
+	void getMydata(int a) {
+		System.out.println(mydata);
+		System.out.println("자식메소드 2");
+	}
+	
+}
