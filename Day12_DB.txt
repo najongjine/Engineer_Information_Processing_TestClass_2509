@@ -35,6 +35,10 @@ GRANT ALL PRIVILEGES ON test1.* TO 'testuser'@'localhost';
 -- SELECT 권한만 부여
 GRANT SELECT ON test1.* TO 'testuser'@'localhost';
 
+
+GRANT ALL PRIVILEGES ON mydb.mytable TO 'user_a'@'localhost' WITH GRANT OPTION;
+-- WITH GRANT OPTION; 권한을 주면서, 권한 주는 기능도 함께 주기
+
 -- 유저의 권한보기
 SHOW GRANTS FOR 'testuser'@'localhost';
 -- SHOW GRTANTS 까지는 공통
