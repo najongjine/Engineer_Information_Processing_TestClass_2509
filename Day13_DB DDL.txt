@@ -15,3 +15,14 @@ CREATE TABLE t_employees (
     REFERENCES t_departments(dept_id)
     ON DELETE CASCADE   -- 여기서 동작이 갈림!
 );
+FK 맺는게 드럽ㄱ세 어려워요
+CONSTRAINT t_departments_fk 는 FK 의 이름.
+이 이름이 있어야 나중에 FK 해지를 할수가 있어요
+
+FOREIGN KEY (dept_id) 이건 t_employees 테이블에서 어떤 칼럼을 FK로 쓸거냐
+
+REFERENCES t_departments(dept_id) 이건 부모 테이블이 뭐고, 부모테이블에서 PK가 뭐냐
+
+ ON DELETE CASCADE 이건 부모 테이블 데이터가 삭제되면, 자식 테이블은 어떻게 할래?
+
+ CASCADE(연쇄작용) 부모가 지워지면 자식도 같이 지운다
