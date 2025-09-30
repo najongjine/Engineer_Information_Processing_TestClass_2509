@@ -56,3 +56,11 @@ SELECT
     name
 FROM t_departments as d
 LEFT JOIN t_employees as e ON e.dept_id = d.dept_id;
+
+SELECT * FROM v_all_employees_info;
+
+view 는 개념 스키마에 속합니다.
+외부 사용자에게 필요한것만 보여줍니다.
+진짜 테이블은 아니어서, 데이터 추가와 삭제는 할수 없습니다
+
+SELECT 쿼리를 짤때 1000줄 넘어가면 눈돌아가서 view 만들면 한줄 컷 됩니다.
