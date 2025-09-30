@@ -43,6 +43,9 @@ ALTER TABLE t_test1 ADD price INT;
 -- 인덱스 생성
 CREATE INDEX idx_price ON t_test1(price);
 
+-- 인덱스 지우기
+ALTER TABLE t_test1 DROP INDEX idx_price;
+
 idx_price : 인덱스 이름
 t_test1 : 테이블 이름
 price : 적용할 칼럼 이름
