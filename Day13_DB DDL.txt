@@ -8,8 +8,8 @@ CREATE TABLE t_departments (
 
 CREATE TABLE t_employees (
   emp_id INT PRIMARY KEY,
-  name VARCHAR(50),
-  dept_id INT,
+  name VARCHAR(50) DEAFULT '',
+  dept_id INT ,
   CONSTRAINT t_departments_fk
   FOREIGN KEY (dept_id)
     REFERENCES t_departments(dept_id)
