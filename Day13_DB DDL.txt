@@ -33,3 +33,6 @@ CREATE TABLE t_test1 (
   id INT PRIMARY KEY,
   str VARCHAR(50) DEFAULT '' UNIQUE NOT NULL
 );
+
+-- 칼럼 삭제
+ALTER TABLE t_test1 DROP COLUMN str;
