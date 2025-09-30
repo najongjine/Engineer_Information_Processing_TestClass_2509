@@ -71,3 +71,9 @@ SELECT 쿼리를 짤때 1000줄 넘어가면 눈돌아가서 view 만들면 한�
 
 -- view 를 삭제
 DROP VIEW v_all_employees_info;
+
+-- 칼럼 타입 변경
+ALTER TABLE t_test1 MODIFY price VARCHAR(50);
+
+-- 칼럼에 디폴트값 설정
+ALTER TABLE t_test1 ALTER COLUMN price SET DEFAULT 0;
