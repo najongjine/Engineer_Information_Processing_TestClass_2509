@@ -46,3 +46,13 @@ CREATE INDEX idx_price ON t_test1(price);
 idx_price : 인덱스 이름
 t_test1 : 테이블 이름
 price : 적용할 칼럼 이름
+
+-- view 생성하기
+CREATE VIEW v_all_employees_info AS
+SELECT 
+    e.dept_id,
+    dept_name,
+    emp_id,
+    name
+FROM t_departments as d
+LEFT JOIN t_employees as e ON e.dept_id = d.dept_id;
