@@ -80,3 +80,10 @@ ALTER TABLE t_test1 ALTER COLUMN price SET DEFAULT 0;
 
 -- 칼럼에 유니트 넣기
 ALTER TABLE t_test1 ADD CONSTRAINT uq_price UNIQUE (price);
+
+ALTER TABLE t_test1 ADD CONSTRAINT uq_price NOT NULL (price);
+
+
+-- 이미 만들어진 테이블에 FK 추가하기
+ALTER TABLE t_test1 ADD CONSTRAINT fk_dept_id
+FOREIGN KEY (dept_id) REFERENCES t_departments(dept_id);
