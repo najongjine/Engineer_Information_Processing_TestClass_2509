@@ -33,3 +33,16 @@ WHERE dept_name IS NULL
 DELETE FROM t_departments
 WHERE dept_id=2
 ;
+
+
+INSERT INTO t_employees
+VALUES(1,"홍길동",2)
+;
+INSERT INTO t_employees
+VALUES(2,"고길동",2)
+;
+
+SELECT
+*
+FROM t_employees
+;
