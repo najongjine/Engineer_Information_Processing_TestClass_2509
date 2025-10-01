@@ -104,3 +104,19 @@ UPDATE t_employees
 SET salary = 500
 WHERE dept_id=4
 ;
+
+-- t_departments 테이블에서 데이터 가져오기
+SELECT
+dept_id
+,dept_name
+FROM t_departments
+;
+
+-- t_employees 테이블에서 데이터 가져오기
+SELECT
+emp_id
+,name
+,dept_id
+,salary
+FROM t_employees
+;
