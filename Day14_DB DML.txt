@@ -47,3 +47,12 @@ SELECT
 *
 FROM t_employees
 ;
+
+
+INSERT INTO t_employees
+VALUES(3,"홍길동",3)
+;
+INSERT INTO t_employees
+VALUES(4,"철수",3)
+;
+
