@@ -1,0 +1,66 @@
+//Test10.java
+package com.itg;
+public class Test10 {
+	public static void main(String[] args) {
+		Child ch1 = new Child("홍길동");//1
+		ch1.iam();
+		Parent ch2 = new Child("이순신");
+		ch2.iam();
+	}
+}
+class Parent{
+	String name;//5
+	Parent(String name){//4
+		this.name=name+"의 부모 입니다.";
+	}
+	void iam() {
+		System.out.println(name);
+	}
+}
+class Child extends Parent{
+	String name;//6
+	int age;
+	Child(String name){//2
+		super(name);//3
+		this.name=name;
+	}
+	Child(String name,int age){
+		this(name);
+		this.name=name;
+		this.age=age;
+	}
+	void iam() {
+		super.iam();
+		System.out.println("내이름은 "+name);
+	}
+}
+
+//Test11.java
+package com.itg;
+
+public class Test11 {
+	public static void main(String[] args) {
+		new MChild().aaa();
+		new MChild(5).aaa();
+	}}
+class MParent{
+	int b;
+	MParent(){
+		b++;
+	}
+	MParent(int b){
+		this.b+=b;
+	}
+	void aaa() {
+		System.out.println(b);
+	}
+}
+class MChild extends MParent{
+	int a;
+	MChild(){
+		this(3);
+	}
+	MChild(int a){
+		super(a);
+	}	
+}
