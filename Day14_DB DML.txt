@@ -79,3 +79,28 @@ DROP COLUMN salary
 ALTER TABLE t_employees
 ADD COLUMN salary INT DEFAULT 0
 ;
+
+
+-- ceo salary = 5000
+UPDATE t_employees
+SET salary = 5000
+WHERE dept_id=1
+;
+
+-- 디자인 salary = 300
+UPDATE t_employees
+SET salary = 300
+WHERE dept_id=2
+;
+
+-- 기획 salary 400
+UPDATE t_employees
+SET salary = 400
+WHERE dept_id=3
+;
+
+-- 개발 salary 500
+UPDATE t_employees
+SET salary = 500
+WHERE dept_id=4
+;
