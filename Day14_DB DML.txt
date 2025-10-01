@@ -142,3 +142,15 @@ emp_id as id
 FROM t_employees
 WHERE salary BETWEEN 300 AND 400
 ;
+
+
+-- inline query. 각 데이터마다, (SELECT NOW()) 요거 실행해라.
+SELECT
+emp_id as id
+,name
+,dept_id
+,salary
+,(SELECT NOW()) as '현재시간'
+FROM t_employees
+WHERE salary BETWEEN 300 AND 400
+;
