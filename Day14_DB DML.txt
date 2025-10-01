@@ -1,0 +1,27 @@
+DML-
+데이터 꺼내서 주기,
+데이터 받아서 저장하기,
+데이터 수정하기
+
+INSERT INTO t_departments(dept_id, dept_name)
+VALUES(1,"1")
+;
+
+INSERT INTO t_departments(dept_id)
+VALUES(2)
+;
+
+-- 데이터 보는 sql
+SELECT
+*
+FROM t_departments
+;
+
+-- 데이터 날리는 sql. 근데 이거 잘못쓰면 데이터 다날라감
+DELETE FROM t_departments
+WHERE dept_name = NULL
+;
+
+DELETE FROM t_departments
+WHERE dept_id=2
+;
