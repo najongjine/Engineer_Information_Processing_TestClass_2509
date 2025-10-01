@@ -131,3 +131,14 @@ emp_id
 FROM t_employees
 WHERE salary BETWEEN 300 AND 400
 ;
+
+-- select column 적는곳에, 계산식도 넣을수 있어요
+SELECT
+emp_id as id
+,name
+,dept_id
+,salary
+,salary / 12 AS '월급'
+FROM t_employees
+WHERE salary BETWEEN 300 AND 400
+;
