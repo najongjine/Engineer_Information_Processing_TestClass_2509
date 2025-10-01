@@ -71,3 +71,11 @@ UPDATE t_departments
 SET dept_name='CEO'
 WHERE dept_id=1
 ;
+
+ALTER TABLE t_employees
+DROP COLUMN salary
+;
+
+ALTER TABLE t_employees
+ADD COLUMN salary INT DEFAULT 0
+;
