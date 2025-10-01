@@ -56,6 +56,17 @@ INSERT INTO t_employees
 VALUES(4,"철수",3)
 ;
 
+INSERT INTO t_employees
+VALUES(5,"빌게이츠",4)
+;
+INSERT INTO t_employees
+VALUES(6,"엘론머스크",4)
+;
+
+INSERT INTO t_employees(emp_id,name,dept_id)
+VALUES(7,"황회장",1)
+;
+
 UPDATE t_departments
 SET dept_name='CEO'
 WHERE dept_id=1
