@@ -120,3 +120,14 @@ emp_id
 ,salary
 FROM t_employees
 ;
+
+
+-- BETWEEN 은 범위조건. 300 포함, 400 포함
+SELECT
+emp_id
+,name
+,dept_id
+,salary
+FROM t_employees
+WHERE salary BETWEEN 300 AND 400
+;
