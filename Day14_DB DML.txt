@@ -7,8 +7,16 @@ INSERT INTO t_departments(dept_id, dept_name)
 VALUES(1,"1")
 ;
 
-INSERT INTO t_departments(dept_id)
-VALUES(2)
+INSERT INTO t_departments(dept_id, dept_name)
+VALUES(2,"디자인")
+;
+
+INSERT INTO t_departments(dept_id, dept_name)
+VALUES(3,"기획")
+;
+
+INSERT INTO t_departments(dept_id, dept_name)
+VALUES(4,"개발")
 ;
 
 -- 데이터 보는 sql
