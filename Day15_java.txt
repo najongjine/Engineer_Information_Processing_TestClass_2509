@@ -1,0 +1,89 @@
+//Test12.java
+package com.itg;
+public class Test12 {
+// 클래스의 추상화 , 메소드의 추상화
+	public static void main(String[] args) {
+		// abstract 미완성
+		CCst b = new CCst();
+		System.out.println(b.a);
+		System.out.println(b.b);
+		System.out.println(b.c);	
+		b.bbb();
+	}
+}
+abstract class Abst{
+	int a=100;
+	abstract void aaa();
+	void bbb() {
+		System.out.println("추상화되지 않은 일반적인 메소드");
+	}
+}
+abstract class BBst extends Abst{
+	int b=200;
+}
+class CCst extends BBst{
+	int c=300;
+	@Override
+	void aaa() {
+		
+	}	
+}
+
+//Test13.java
+package com.itg;
+
+public class Test13 {
+	public static void main(String[] args) {
+		// interface 인터페이스 극추상화
+		MyD[] arr = {new MyD(),new YouD(),new MyD(),new YouD(),new YouD()};
+		new AAA(new DDD()).printB();
+	}
+}
+class MyD{}
+class YouD extends MyD{}
+interface FFF{
+	void PPP();
+}
+class AAA{
+	FFF b;
+	AAA(FFF b){
+		this.b=b;
+	}
+	void printB() {
+		b.PPP();
+	}
+}
+class DDD implements FFF{
+	String version="V4.0";
+	public void PPP() {
+		MMM();
+		PSD();
+	}
+	void MMM() {
+		System.out.println(version+" :업그레이드 된 기능이에요");
+	}
+	void PSD() {
+		System.out.println(" 인공지능 기능이 작동해요");
+	}
+	
+}
+class CCC implements FFF{
+	String version="V2.0";
+	void printC() {
+		System.out.println(this.version);
+	}
+	@Override
+	public void PPP() {
+		printC();
+	}
+}
+class BBB implements FFF{
+	String version="v0.1";
+	void printP(){
+		System.out.println(this.version);
+	}
+	@Override
+	public void PPP() {
+		printP();
+	}
+}
