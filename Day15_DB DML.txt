@@ -1,37 +1,44 @@
 -- Departments 테이블 생성
 CREATE TABLE Departments (
-    DeptID INT PRIMARY KEY,
-    DeptName VARCHAR(50) NOT NULL,
-    Location VARCHAR(50)
+    department_id INT PRIMARY KEY,
+    dept_name VARCHAR(100) NOT NULL UNIQUE COMMENT '부서명',
+    location VARCHAR(100) COMMENT '지역'
 );
-
----
 
 -- Employees 테이블 생성
 CREATE TABLE Employees (
-    EmpID INT PRIMARY KEY,
-    EmpName VARCHAR(100) NOT NULL,
-    DeptID INT,
-    HireDate DATE,
-    Salary DECIMAL(10, 2), -- 급여는 소수점 두 자리까지 가능하도록 DECIMAL 사용
-    JobTitle VARCHAR(100),
-    FOREIGN KEY (DeptID) REFERENCES Departments(DeptID) -- DeptID는 Departments 테이블을 참조하는 외래 키
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(100) NOT NULL COMMENT '이름',
+    department_id INT COMMENT '부서ID (FK)',
+    hire_date DATE COMMENT '입사일',
+    salary DECIMAL(10, 2) COMMENT '연봉',
+    job_title VARCHAR(100) COMMENT '직무',
+    
+    -- 외래 키 설정: Employees.department_id -> Departments.department_id
+    FOREIGN KEY (department_id) REFERENCES Departments(department_id)
+        ON DELETE SET NULL  -- 부서가 삭제되면 직원의 department_id를 NULL로 설정
+        ON UPDATE CASCADE   -- 부서 ID가 변경되면 직원 테이블에도 반영
 );
-
----
 
 -- Projects 테이블 생성
 CREATE TABLE Projects (
-    ProjID INT PRIMARY KEY,
-    ProjName VARCHAR(100) NOT NULL,
-    DeptID INT, -- 프로젝트를 관리하는 부서 ID로 가정
-    StartDate DATE,
-    EndDate DATE,
-    Budget DECIMAL(12, 2), -- 예산은 좀 더 큰 값도 수용할 수 있도록 DECIMAL(12, 2) 사용
-    FOREIGN KEY (DeptID) REFERENCES Departments(DeptID) -- DeptID는 Departments 테이블을 참조하는 외래 키
+    project_id INT PRIMARY KEY,
+    project_name VARCHAR(100) NOT NULL COMMENT '프로젝트명',
+    dept_id INT COMMENT '부서ID (FK)',
+    start_date DATE COMMENT '시작일',
+    end_date DATE COMMENT '종료일',
+    budget DECIMAL(15, 2) COMMENT '예산',
+    
+    -- 외래 키 설정: Projects.dept_id -> Departments.department_id
+    FOREIGN KEY (dept_id) REFERENCES Departments(department_id)
+        ON DELETE CASCADE   -- 부서가 삭제되면 해당 부서의 프로젝트도 삭제
+        ON UPDATE CASCADE   -- 부서 ID가 변경되면 프로젝트 테이블에도 반영
 );
 
 
 
 -- 흑백 화면에서 test2 데이터베이스 선택하기
 USE test2;
+
+
+
