@@ -1,3 +1,5 @@
+https://wildojisan.tistory.com/149
+
 -- Departments 테이블 생성
 CREATE TABLE Departments (
     department_id INT PRIMARY KEY,
