@@ -1,0 +1,43 @@
+-- Departments 테이블 생성
+CREATE TABLE Departments (
+    dept_id INTEGER PRIMARY KEY,
+    dept_name VARCHAR(50) NOT NULL,
+    location VARCHAR(50) NOT NULL
+);
+
+-- Employees 테이블 생성
+CREATE TABLE Employees (
+    emp_id INTEGER PRIMARY KEY,
+    emp_name VARCHAR(100) NOT NULL,
+    dept_id INTEGER NOT NULL,
+    hire_date DATE NOT NULL,
+    salary NUMERIC(10, 2) NOT NULL, -- 소수점 둘째 자리까지 저장 가능한 숫자 타입
+    position VARCHAR(50),
+    -- 외래 키(Foreign Key) 설정: Employees.dept_id는 Departments.dept_id를 참조
+    CONSTRAINT fk_department
+        FOREIGN KEY (dept_id)
+        REFERENCES Departments (dept_id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
+
+-- Projects 테이블 생성
+CREATE TABLE Projects (
+    proj_id INTEGER PRIMARY KEY,
+    proj_name VARCHAR(100) NOT NULL,
+    dept_id INTEGER NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE,
+    budget NUMERIC(15, 2),
+    -- 외래 키(Foreign Key) 설정: Projects.dept_id는 Departments.dept_id를 참조
+    CONSTRAINT fk_managing_department
+        FOREIGN KEY (dept_id)
+        REFERENCES Departments (dept_id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
+
+
+
+-- 흑백 화면에서 test2 데이터베이스 선택하기
+USE test2;
