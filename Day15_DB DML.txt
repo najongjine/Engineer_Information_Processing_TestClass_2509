@@ -37,6 +37,27 @@ CREATE TABLE Projects (
 
 
 
+INSERT INTO Departments VALUES
+  (1, 'IT', 'Seoul'),
+  (2, 'HR', 'Seoul'),
+  (3, 'Finance', 'Busan'),
+  (4, 'Sales', 'Incheon');
+
+INSERT INTO Employees VALUES
+  (101, 'Alice', 1, '2020‑01‑15', 55000, 'Developer'),
+  (102, 'Bob', 2, '2019‑05‑20', 45000, 'HR Specialist'),
+  (103, 'Charlie', 1, '2021‑07‑01', 62000, 'Senior Developer'),
+  (104, 'David', 3, '2018‑09‑10', 70000, 'Accountant'),
+  (105, 'Tiger', 3, '2018‑10‑10', 66000, 'Accountant'),
+
+INSERT INTO Projects VALUES
+  (201, 'Web Development', 1, '2024‑01‑01', '2024‑12‑31', 100000),
+  (202, 'AI Development', 1, '2024‑05‑01', '2024‑11‑31', 200000)
+  ;
+
+
+
+
 -- 흑백 화면에서 test2 데이터베이스 선택하기
 USE test2;
 
