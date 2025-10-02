@@ -64,3 +64,30 @@ USE test2;
 
 
 
+
+SELECT
+d.department_id,
+d.dept_name,
+d.location
+FROM departments as d
+;
+
+SELECT
+e.department_id,
+e.emp_id,
+e.emp_name,
+e.hire_date,
+e.job_title,
+e.salary
+FROM employees as e
+;
+
+SELECT
+p.budget,
+p.dept_id,
+p.end_date,
+p.project_id,
+p.project_name,
+p.start_date
+FROM projects as p
+;
