@@ -35,3 +35,10 @@ Charlie
 SELECT emp_name FROM Employees WHERE department_id >= 1 
 EXCEPT
 SELECT emp_name FROM Employees WHERE department_id = 3;
+
+
+
+-- 교차되는 데이터만 출력
+SELECT emp_name FROM Employees WHERE department_id >= 1 
+INTERSECT 
+SELECT emp_name FROM Employees WHERE department_id = 3;
