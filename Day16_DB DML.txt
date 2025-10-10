@@ -1,0 +1,17 @@
+https://wildojisan.tistory.com/149
+
+-- EXISTS 는 TRUE, FALSE 만 봅니다.
+서브쿼리 안에서 데이터를 하나라도 가져 왔으면  TRUE 처리, 아니면 FALSE 처리
+TRUE 면 
+SELECT emp_name
+FROM Employees e
+이걸 실행
+
+SELECT emp_name
+FROM Employees e
+WHERE EXISTS (
+			SELECT 1
+              FROM Projects p
+              WHERE p.dept_id = 1
+              )
+;
