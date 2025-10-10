@@ -15,3 +15,23 @@ WHERE EXISTS (
               WHERE p.dept_id = 1
               )
 ;
+
+
+Alice
+Charlie
+David
+Tiger
+
+에서 
+
+David
+Tiger
+를 빼겠다
+
+결과는
+Alice
+Charlie
+
+SELECT emp_name FROM Employees WHERE department_id >= 1 
+EXCEPT
+SELECT emp_name FROM Employees WHERE department_id = 3;
