@@ -1,0 +1,80 @@
+//Test14
+package com.itg;
+
+import java.util.Arrays;
+public class Test14 {
+	public static void main(String[] args) {
+		new Examp().aaa(10);
+		new Examp().aa(new int[]{1,2,3,4,5});
+		new Examp().a(new MyExam3());//1
+	}
+}
+class Examp{
+	void aaa(int a) {		System.out.println(a);	}
+	void aa(int[] a) {		System.out.println(Arrays.toString(a));	}
+	void a(ExamIntf e) {//2
+		e.getVersion();//3
+	}
+}
+interface ExamIntf{	public void getVersion();}
+class MyExam implements ExamIntf{
+	private String version="v1";
+	public void getVersion() {		System.out.println(this.version);	}
+}
+class MyExam2 implements ExamIntf{
+	private String version="v2";
+	void mygetVersion() {		System.out.println(this.version);	}
+	public void getVersion() {		mygetVersion();	}
+}
+class MyExam3 implements ExamIntf{
+	public void getVersion() {
+		aaa();
+	}
+	void aaa() {
+		bbb();
+	}
+	void bbb() {
+		System.out.println("V3");
+	}	
+}
+
+
+
+
+
+//Test15
+package com.itg;
+public class Test15 {
+	public static void main(String[] args) {
+		//static
+		MMM m1 = new MMM();
+		MMM m2 = new MMM();
+		MMM m3 = new MMM();
+		m1.a=50;
+		m2.a=100;
+		m3.a=200;
+		System.out.println(m1.a);
+		MMM.a=500;
+		System.out.println(m1.a);
+		MMM.mm();
+		new MMM().mm();
+		String a = "반가워요";
+		System.out.println(a.charAt(1));
+		String b = new String("반가워요");
+		String c = "반가워요";
+		System.out.println(a==c);
+		System.out.println(a==b);
+		System.out.println(a.equals(b));
+		//equals 오버라이드
+	}
+}
+class MMM{
+	static int a;
+	final static String COLOR="빨강";
+	public static void mm() {
+		System.out.println("스태틱 변수는 객체와 상관 없이 호출됩니다. 객체와는 무관합니다.");
+	}
+}
+final class ZZZ{
+	
+}
