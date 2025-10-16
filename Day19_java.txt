@@ -1,0 +1,114 @@
+//Test18
+package com.itg;
+
+public class Test18 {
+	public static void main(String[] args) {
+		// 예외 처리(오류 처리)- 오류가 발생하면 그 지점에 프로그램이 멈춘다.
+		//    예외가 발생할만한곳을 예측하여 예외 처리를 한다.
+		// Object > Exception > 산술예외, 존재하지 않은 인덱스 지정
+		int[] aa = new int[] {1,2,3,4,5};
+		TB t=new TB();
+		TT ts = (TB)t;
+		int p=0;
+		try {
+			System.out.println(aa[5]);//java.lang.ArrayIndexOutOfBoundsException
+			p++;
+		}catch(NumberFormatException e) {
+			p++;
+			System.out.println("잘못된 숫자를 변경하려 시도 했습니다.");
+		}catch(ArithmeticException e) {
+			p+=2;
+			System.out.println("잘못된 산술 연산을 수행했네요");
+		}catch(ArrayIndexOutOfBoundsException e) {
+			p+=3;
+			System.out.println("없는 인덱스를 지정한 예외가 발생하였습니다.");
+		}finally {
+			p++;
+			System.out.println("예외가 발생하던지 안하던지 무조건 실행되는 구문이다.");
+		}
+		System.out.println(p);//4
+		try {
+			p++;
+			Thread.sleep(1000);
+			int a = Integer.parseInt("일");//java.lang.NumberFormatException
+			p++;
+		}catch(NumberFormatException e) {
+			p+=1;
+			System.out.println("잘못된 숫자를 변경하려 시도 했습니다.");
+		}catch(ArithmeticException e) {
+			p+=2;
+			System.out.println("잘못된 산술 연산을 수행했네요");
+		}catch(ArrayIndexOutOfBoundsException e) {
+			p+=3;
+			System.out.println("없는 인덱스를 지정한 예외가 발생하였습니다.");
+		}catch(Exception e){
+			p+=4;
+		}finally {
+			p++;
+			System.out.println("예외가 발생하던지 안하던지 무조건 실행되는 구문이다.");
+		}
+		System.out.println(p);//7
+		try {
+			System.out.println(1/0);//java.lang.ArithmeticException
+		}catch(NumberFormatException e) {
+			p+=1;
+			System.out.println("잘못된 숫자를 변경하려 시도 했습니다.");
+		}catch(ArrayIndexOutOfBoundsException e) {
+			p+=2;
+			System.out.println("없는 인덱스를 지정한 예외가 발생하였습니다.");
+		}catch(Exception e){
+			p+=3;
+		}finally {
+			p++;
+			System.out.println("예외가 발생하던지 안하던지 무조건 실행되는 구문이다.");
+		}
+		System.out.println(p);
+		
+		System.out.println("출력결과");
+		try {
+			new Mtest().mymm();
+		}catch(ArithmeticException e) {
+			System.out.println("산술예외 발생");//=>진입
+		}catch(Exception e) {
+			System.out.println("일반예외 발생");
+		}
+		try {
+			new Mtest().yymm();
+		}catch(Exception e) {
+			System.out.println(Integer.parseInt(e.getMessage())+100);
+		}
+	} 	
+}
+class Mtest{
+	public void mymm() throws Exception{
+		int[] arr=new int[] {1,3,5};
+		System.out.println(arr[4]);
+		System.out.println(1/0);
+	}
+	public void yymm() throws Exception {
+		throw new Exception("10");		
+	}
+}
+class TT{
+	
+}
+class TC{
+	
+}
+class TB extends TT{
+	
+}
+//Test19
+package com.itg;
+
+public class Test19 {
+	public static void main(String[] args) {
+		//wrapper class
+		// int byte short long flot double char
+		// Integer Byte Short Long Flot Double Character
+		int a=10;
+		Integer aa = 10;
+		Integer abc = a;
+		int bbc = abc;
+	}
+}
