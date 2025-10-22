@@ -38,6 +38,8 @@ p97
 
 디자인패턴
 p345
+https://wildojisan.tistory.com/151
+https://github.com/najongjine/Engineer_Information_Processing_TestClass_2509/blob/main/Day17_java.txt
 
 객체지향 E-R diagram Coad-Yourdon
 p344
