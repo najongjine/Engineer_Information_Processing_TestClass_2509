@@ -1,0 +1,110 @@
+#include <stdio.h>
+#define SIZE 3
+
+typedef struct {
+    int a[SIZE];
+    int front;
+    int rear;
+} Queue;
+
+// Helper function to print the current state (for logging)
+void print_queue_state(const char* label, Queue* q) {
+    printf("  [STATE] %s: Array={%d, %d, %d}, Front=%d, Rear=%d\n",
+           label, q->a[0], q->a[1], q->a[2], q->front, q->rear);
+}
+
+void enq(Queue* q, int val){
+    printf("\n>>> ENQUEUE(%d) called (Rear: %d)\n", val, q->rear);
+
+    // 1. 값 저장: 현재 rear 위치에 값을 넣습니다.
+    q->a[q->rear] = val;
+
+    // 2. rear 이동: rear를 다음 위치로 이동시킵니다. (원형 큐이므로 modulo 연산 사용)
+    q->rear = (q->rear + 1) % SIZE;
+
+    printf("  LOG: a[%d]에 %d 저장. New Rear: %d\n", (q->rear - 1 + SIZE) % SIZE, val, q->rear);
+    print_queue_state("After ENQ", q);
+}
+
+int deq(Queue* q) {
+    printf("\n<<< DEQUEUE() called (Front: %d)\n", q->front);
+
+    // 1. 값 추출: 현재 front 위치의 값을 가져옵니다.
+    int val = q->a[q->front];
+
+    // 2. front 이동: front를 다음 위치로 이동시킵니다. (원형 큐이므로 modulo 연산 사용)
+    q->front = (q->front + 1) % SIZE;
+
+    printf("  LOG: a[%d]의 값 %d 추출. New Front: %d\n", (q->front - 1 + SIZE) % SIZE, val, q->front);
+    print_queue_state("After DEQ", q);
+    return val;
+}
+
+int main() {
+    // 큐 초기화: a={0, 0, 0}, front=0, rear=0
+    Queue q = {{0}, 0, 0};
+    printf("--- INITIAL STATE ---\n");
+    print_queue_state("Initial", &q);
+
+    // 1. enq(&q, 1)
+    enq(&q, 1);
+    
+    // 2. enq(&q, 2)
+    enq(&q, 2);
+    
+    // 3. deq(&q)
+    deq(&q);
+    
+    // 4. enq(&q, 3)
+    enq(&q, 3); // <<< 여기서 rear가 0으로 다시 돌아옵니다 (원형)
+
+    printf("\n--- MAIN LOGIC: FINAL DEQUEUE ---\n");
+    
+    // 5. int first = deq(&q);
+    int first = deq(&q);
+    
+    // 6. int second = deq(&q);
+    int second = deq(&q);
+    
+    printf("\n--- FINAL RESULT ---\n");
+    printf("첫 번째 추출된 값: %d, 두 번째 추출된 값: %d\n", first, second);
+    
+    return 0;
+}
+
+
+
+--- INITIAL STATE ---
+  [STATE] Initial: Array={0, 0, 0}, Front=0, Rear=0
+
+>>> ENQUEUE(1) called (Rear: 0)
+  LOG: a[0]에 1 저장. New Rear: 1
+  [STATE] After ENQ: Array={1, 0, 0}, Front=0, Rear=1
+
+>>> ENQUEUE(2) called (Rear: 1)
+  LOG: a[1]에 2 저장. New Rear: 2
+  [STATE] After ENQ: Array={1, 2, 0}, Front=0, Rear=2
+
+<<< DEQUEUE() called (Front: 0)
+  LOG: a[0]의 값 1 추출. New Front: 1
+  [STATE] After DEQ: Array={1, 2, 0}, Front=1, Rear=2
+
+>>> ENQUEUE(3) called (Rear: 2)
+  LOG: a[2]에 3 저장. New Rear: 0
+  [STATE] After ENQ: Array={1, 2, 3}, Front=1, Rear=0
+
+--- MAIN LOGIC: FINAL DEQUEUE ---
+
+<<< DEQUEUE() called (Front: 1)
+  LOG: a[1]의 값 2 추출. New Front: 2
+  [STATE] After DEQ: Array={1, 2, 3}, Front=2, Rear=0
+
+<<< DEQUEUE() called (Front: 2)
+  LOG: a[2]의 값 3 추출. New Front: 0
+  [STATE] After DEQ: Array={1, 2, 3}, Front=0, Rear=0
+
+--- FINAL RESULT ---
+첫 번째 추출된 값: 2, 두 번째 추출된 값: 3
+
+
+=== Code Execution Successful ===

@@ -1,0 +1,164 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    char c;
+    struct node* p; // 'next' 포인터
+};
+
+// 헬퍼 함수: 현재 리스트의 상태를 출력합니다.
+void print_list_state(const char* label, struct node* head) {
+    printf("  [LIST STATE] %s: ", label);
+    struct node* curr = head;
+    if (!curr) {
+        printf("NULL\n");
+        return;
+    }
+    while (curr) {
+        // 노드의 값과 주소를 함께 출력하여 흐름을 명확히 합니다.
+        printf("('%c'@%p) -> ", curr->c, (void*)curr);
+        curr = curr->p;
+    }
+    printf("NULL\n");
+}
+
+struct node* func(char* s) {
+    printf("--- func(\"%s\") 시작: 문자열을 역순으로 리스트에 저장 ---\n", s);
+    
+    struct node* h = NULL, *n; // h는 현재 head, n은 새 노드
+    
+    while(*s) {
+        char current_char = *s;
+        
+        printf("\n  [LOOP START] 현재 처리 문자: '%c' (문자열 포인터 s: %p)\n", current_char, (void*)s);
+        printf("  LOG: Old Head (h): %p\n", (void*)h);
+        
+        // 1. 새 노드 할당
+        n = (struct node*)malloc(sizeof(struct node));
+        printf("  LOG 1: New Node (n) 할당. 주소: %p\n", (void*)n);
+        
+        // 2. n->c = *s++;
+        //    (1) *s 값 ('B'/'E'/'S'/'T')을 n->c에 저장
+        //    (2) s 포인터를 다음 문자로 이동
+        n->c = *s++;
+        printf("  LOG 2: n->c = *s++; 실행: 노드 값='%c'. s 포인터 다음으로 이동.\n", n->c);
+        
+        // 3. n->p = h;
+        //    새 노드 n의 next 포인터(p)가 기존의 head를 가리키게 하여 리스트 앞에 붙입니다.
+        n->p = h;
+        printf("  LOG 3: n->p = h; 실행: New Node(%p)의 next가 Old Head(%p)를 가리킴.\n", (void*)n, (void*)h);
+        
+        // 4. h = n;
+        //    리스트의 head를 새 노드 n으로 변경합니다.
+        h = n;
+        printf("  LOG 4: h = n; 실행: New Head가 %p로 업데이트됨.\n", (void*)h);
+        
+        print_list_state("Current List", h);
+    }
+    
+    printf("\n--- func() 종료: Head 포인터 %p 반환 ---\n", (void*)h);
+    return h;
+}
+
+int main() {
+    printf("========================================\n");
+    printf("        MAIN 시작: 리스트 생성\n");
+    printf("========================================\n");
+    
+    // func("BEST") 호출
+    struct node* n = func("BEST");
+    
+    printf("\n========================================\n");
+    printf("        MAIN: 리스트 출력 및 메모리 해제\n");
+    printf("========================================\n");
+
+    // n 포인터는 리스트의 head를 가리킵니다. (T -> S -> E -> B 순)
+    while(n) {
+        printf("  [OUTPUT] 현재 노드 주소: %p\n", (void*)n);
+        
+        // 1. 값 출력
+        printf("  LOG: 문자 '%c' 출력.\n", n->c);
+        putchar(n->c);
+        
+        // 2. 다음 노드로 이동 전 임시 포인터에 현재 주소 저장
+        struct node* t = n;
+        
+        // 3. 다음 노드로 이동 (n = n->p)
+        n = n->p;
+        
+        // 4. 이전 노드 메모리 해제
+        printf("  LOG: 현재 노드 주소 %p 해제. 다음 노드 주소: %p\n", (void*)t, (void*)n);
+        free(t);
+    }
+    
+    printf("\n\n========================================\n");
+    printf("        MAIN 종료\n");
+    printf("========================================\n");
+
+    return 0;
+}
+
+
+
+========================================
+        MAIN 시작: 리스트 생성
+========================================
+--- func("BEST") 시작: 문자열을 역순으로 리스트에 저장 ---
+
+  [LOOP START] 현재 처리 문자: 'B' (문자열 포인터 s: 0x40229e)
+  LOG: Old Head (h): (nil)
+  LOG 1: New Node (n) 할당. 주소: 0x17d76b0
+  LOG 2: n->c = *s++; 실행: 노드 값='B'. s 포인터 다음으로 이동.
+  LOG 3: n->p = h; 실행: New Node(0x17d76b0)의 next가 Old Head((nil))를 가리킴.
+  LOG 4: h = n; 실행: New Head가 0x17d76b0로 업데이트됨.
+  [LIST STATE] Current List: ('B'@0x17d76b0) -> NULL
+
+  [LOOP START] 현재 처리 문자: 'E' (문자열 포인터 s: 0x40229f)
+  LOG: Old Head (h): 0x17d76b0
+  LOG 1: New Node (n) 할당. 주소: 0x17d76d0
+  LOG 2: n->c = *s++; 실행: 노드 값='E'. s 포인터 다음으로 이동.
+  LOG 3: n->p = h; 실행: New Node(0x17d76d0)의 next가 Old Head(0x17d76b0)를 가리킴.
+  LOG 4: h = n; 실행: New Head가 0x17d76d0로 업데이트됨.
+  [LIST STATE] Current List: ('E'@0x17d76d0) -> ('B'@0x17d76b0) -> NULL
+
+  [LOOP START] 현재 처리 문자: 'S' (문자열 포인터 s: 0x4022a0)
+  LOG: Old Head (h): 0x17d76d0
+  LOG 1: New Node (n) 할당. 주소: 0x17d76f0
+  LOG 2: n->c = *s++; 실행: 노드 값='S'. s 포인터 다음으로 이동.
+  LOG 3: n->p = h; 실행: New Node(0x17d76f0)의 next가 Old Head(0x17d76d0)를 가리킴.
+  LOG 4: h = n; 실행: New Head가 0x17d76f0로 업데이트됨.
+  [LIST STATE] Current List: ('S'@0x17d76f0) -> ('E'@0x17d76d0) -> ('B'@0x17d76b0) -> NULL
+
+  [LOOP START] 현재 처리 문자: 'T' (문자열 포인터 s: 0x4022a1)
+  LOG: Old Head (h): 0x17d76f0
+  LOG 1: New Node (n) 할당. 주소: 0x17d7710
+  LOG 2: n->c = *s++; 실행: 노드 값='T'. s 포인터 다음으로 이동.
+  LOG 3: n->p = h; 실행: New Node(0x17d7710)의 next가 Old Head(0x17d76f0)를 가리킴.
+  LOG 4: h = n; 실행: New Head가 0x17d7710로 업데이트됨.
+  [LIST STATE] Current List: ('T'@0x17d7710) -> ('S'@0x17d76f0) -> ('E'@0x17d76d0) -> ('B'@0x17d76b0) -> NULL
+
+--- func() 종료: Head 포인터 0x17d7710 반환 ---
+
+========================================
+        MAIN: 리스트 출력 및 메모리 해제
+========================================
+  [OUTPUT] 현재 노드 주소: 0x17d7710
+  LOG: 문자 'T' 출력.
+T  LOG: 현재 노드 주소 0x17d7710 해제. 다음 노드 주소: 0x17d76f0
+  [OUTPUT] 현재 노드 주소: 0x17d76f0
+  LOG: 문자 'S' 출력.
+S  LOG: 현재 노드 주소 0x17d76f0 해제. 다음 노드 주소: 0x17d76d0
+  [OUTPUT] 현재 노드 주소: 0x17d76d0
+  LOG: 문자 'E' 출력.
+E  LOG: 현재 노드 주소 0x17d76d0 해제. 다음 노드 주소: 0x17d76b0
+  [OUTPUT] 현재 노드 주소: 0x17d76b0
+  LOG: 문자 'B' 출력.
+B  LOG: 현재 노드 주소 0x17d76b0 해제. 다음 노드 주소: (nil)
+
+
+========================================
+        MAIN 종료
+========================================
+
+
+=== Code Execution Successful ===

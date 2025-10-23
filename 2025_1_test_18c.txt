@@ -1,0 +1,174 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Data {
+    int value;
+    struct Data *next;
+} Data;
+
+// Helper function to print the list (for logging)
+void print_list(Data* head, const char* label) {
+    printf("--- %s ---\nList: ", label);
+    Data* curr = head;
+    while (curr != NULL) {
+        printf("%d -> ", curr->value);
+        curr = curr->next;
+    }
+    printf("NULL\n");
+}
+
+Data* insert(Data* head, int value) {
+    printf("\n--- Calling insert(%d) ---\n", value);
+    printf("head(%p) ---\n", head);
+    Data* new_node = (Data*)malloc(sizeof(Data));
+    new_node->value = value;
+    new_node->next = head;
+    printf("Inserted node with value %d at the head.\n", value);
+    print_list(new_node, "After insert");
+    return new_node;
+}
+
+Data* reconnect(Data* head, int value) {
+    printf("\n--- Calling reconnect(%d) ---\n", value);
+    print_list(head, "List before reconnect");
+
+    // Case 1: List is empty OR the node to move is already the head
+    if (head == NULL || head->value == value) {
+        printf("Node %d is NULL or already the head. No change.\n", value);
+        return head;
+    }
+
+    Data *prev = NULL, *curr = head;
+
+    // Search for the node with the target value
+    while (curr != NULL && curr->value != value) {
+        prev = curr;
+        curr = curr->next;
+        printf("Searching: current node is %d\n", curr ? curr->value : -1);
+    }
+
+    // Case 2: Node was found (curr != NULL) and it's NOT the head (prev != NULL)
+    if (curr != NULL && prev != NULL) {
+        printf("Found node with value %d. Moving it to the head.\n", value);
+
+        // Step 1: Remove the node from its current position
+        // The node before it (prev) now points to the node after it (curr->next)
+        printf("Step 1: prev->next (%d) now points to curr->next (%d)\n", prev->value, curr->next ? curr->next->value : -1);
+        prev->next = curr->next;
+        print_list(head, "List after removal");
+
+        // Step 2: Make the found node point to the *old* head
+        // The found node's (curr) next pointer now points to the previous head (head)
+        printf("Step 2: curr->next (%d) now points to old head (%d)\n", curr->value, head->value);
+        curr->next = head;
+
+        // Step 3: Update the head to be the found node
+        // The list head is now the found node (curr)
+        printf("Step 3: New head is %d\n", curr->value);
+        head = curr;
+    } else if (curr == NULL) {
+        // Case 3: Node was not found
+        printf("Node with value %d not found in the list.\n", value);
+    } // prev == NULL is already covered by the initial 'if'
+
+    print_list(head, "List after reconnect");
+    return head;
+}
+
+int main() {
+    Data *head = NULL, *curr;
+
+    // 1. Initial Insertions
+    // List is built by inserting at the head.
+    // Iteration 1: insert(1) -> List: 1
+    // Iteration 2: insert(2) -> List: 2 -> 1
+    // Iteration 3: insert(3) -> List: 3 -> 2 -> 1
+    // Iteration 4: insert(4) -> List: 4 -> 3 -> 2 -> 1
+    // Iteration 5: insert(5) -> List: 5 -> 4 -> 3 -> 2 -> 1
+    for (int i = 1; i <= 5; i++)
+        head = insert(head, i);
+
+    // Initial state after all inserts: 5 -> 4 -> 3 -> 2 -> 1 -> NULL
+    printf("\n\n*** Main Loop: Initial List State ***\n");
+    print_list(head, "Main initial list");
+
+    // 2. Reconnect Operation
+    // Move node '3' to the head.
+    // Original list: 5 -> 4 -> 3 -> 2 -> 1
+    // prev becomes 4, curr becomes 3
+    // Step 1: 4->next points to 3->next (which is 2). List is now: 5 -> 4 -> 2 -> 1
+    // Step 2: 3->next points to the old head (5).
+    // Step 3: head becomes 3.
+    // Final list: 3 -> 5 -> 4 -> 2 -> 1
+    head = reconnect(head, 3);
+
+    // 3. Final Print
+    printf("\n\n*** Main Loop: Final Output ***\n");
+    for (curr = head; curr != NULL; curr = curr->next)
+        printf("%d", curr->value);
+    printf("\n");
+
+    // Note: Freeing memory is typically done here but omitted for simplicity in this flow tracing.
+
+    return 0;
+}
+
+
+
+
+
+--- Calling insert(1) ---
+head((nil)) ---
+Inserted node with value 1 at the head.
+--- After insert ---
+List: 1 -> NULL
+
+--- Calling insert(2) ---
+head(0x385fb6b0) ---
+Inserted node with value 2 at the head.
+--- After insert ---
+List: 2 -> 1 -> NULL
+
+--- Calling insert(3) ---
+head(0x385fb6d0) ---
+Inserted node with value 3 at the head.
+--- After insert ---
+List: 3 -> 2 -> 1 -> NULL
+
+--- Calling insert(4) ---
+head(0x385fb6f0) ---
+Inserted node with value 4 at the head.
+--- After insert ---
+List: 4 -> 3 -> 2 -> 1 -> NULL
+
+--- Calling insert(5) ---
+head(0x385fb710) ---
+Inserted node with value 5 at the head.
+--- After insert ---
+List: 5 -> 4 -> 3 -> 2 -> 1 -> NULL
+
+
+*** Main Loop: Initial List State ***
+--- Main initial list ---
+List: 5 -> 4 -> 3 -> 2 -> 1 -> NULL
+
+--- Calling reconnect(3) ---
+--- List before reconnect ---
+List: 5 -> 4 -> 3 -> 2 -> 1 -> NULL
+Searching: current node is 4
+Searching: current node is 3
+Found node with value 3. Moving it to the head.
+Step 1: prev->next (4) now points to curr->next (2)
+--- List after removal ---
+List: 5 -> 4 -> 2 -> 1 -> NULL
+Step 2: curr->next (3) now points to old head (5)
+Step 3: New head is 3
+--- List after reconnect ---
+List: 3 -> 5 -> 4 -> 2 -> 1 -> NULL
+
+
+*** Main Loop: Final Output ***
+35421
+
+
+=== Code Execution Successful ===

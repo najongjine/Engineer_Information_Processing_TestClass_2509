@@ -1,0 +1,119 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int p;
+    struct node* n;
+};
+
+// 헬퍼 함수: 현재 노드의 상태(값, 다음 노드 포인터, 자기 주소)를 출력합니다.
+void print_node_state(const char* name, struct node* node) {
+    if (node) {
+        printf("  [NODE STATE] %s (Address: %p): p=%d, n=%p\n",
+               name, (void*)node, (node)->p, (void*)(node)->n);
+    } else {
+        printf("  [NODE STATE] %s: NULL\n", name);
+    }
+}
+
+int main() {
+    printf("--- 1. 초기 노드 선언 및 주소 확인 ---\n");
+    // 노드 a, b, c를 스택에 선언하고 초기화합니다.
+    struct node a = {1, NULL};
+    struct node b = {2, NULL};
+    struct node c = {3, NULL};
+
+    printf("LOG: 노드 A, B, C 생성 및 초기값 설정.\n");
+    print_node_state("a", &a);
+    print_node_state("b", &b);
+    print_node_state("c", &c);
+    printf("----------------------------------------\n");
+
+    // 첫 번째 연결 작업: a -> b -> c -> NULL
+    printf("--- 2. 첫 번째 연결 작업: a -> b -> c -> NULL ---\n");
+    a.n = &b;
+    b.n = &c;
+    c.n = NULL;
+    printf("LOG: a.n = &b; b.n = &c; c.n = NULL 실행 완료.\n");
+    print_node_state("a", &a); // a.n은 b의 주소
+    print_node_state("b", &b); // b.n은 c의 주소
+    print_node_state("c", &c); // c.n은 NULL
+    printf("----------------------------------------\n");
+
+    // 두 번째 연결 작업: c -> a -> b -> NULL
+    // 이 시점에서 기존의 c.n = NULL이 무시됩니다.
+    printf("--- 3. 두 번째 연결 작업: c -> a -> b -> NULL ---\n");
+    c.n = &a;
+    printf("LOG: c.n = &a; (c -> a 연결)\n");
+    print_node_state("c", &c); // c.n은 a의 주소
+
+    a.n = &b;
+    printf("LOG: a.n = &b; (a -> b 연결)\n");
+    print_node_state("a", &a); // a.n은 b의 주소
+
+    b.n = NULL;
+    printf("LOG: b.n = NULL; (b에서 리스트 종료)\n");
+    print_node_state("b", &b); // b.n은 NULL
+    printf("----------------------------------------\n");
+
+    // 헤드 포인터 설정
+    struct node* head = &c;
+    printf("--- 4. head 포인터 설정 및 최종 연결 상태 ---\n");
+    printf("LOG: head = &c; (head는 노드 c를 가리킴)\n");
+    printf("Head Address: %p\n", (void*)head);
+    
+    // 최종 리스트의 흐름: head(c) -> a -> b -> NULL
+    printf("LOG: 최종 연결 리스트의 순서: head(c) -> c.n(a) -> c.n.n(b)\n");
+    printf("----------------------------------------\n");
+
+    // 최종 출력: head->p, head->n->p, head->n->n->p
+    // head->p  : c의 p 값 (3)
+    // head->n->p: c.n (a)의 p 값 (1)
+    // head->n->n->p: c.n.n (b)의 p 값 (2)
+    printf("--- 5. 최종 출력 결과 ---\n");
+    printf("head->p (c): %d\n", head->p);
+    printf("head->n->p (a): %d\n", head->n->p);
+    printf("head->n->n->p (b): %d\n", head->n->n->p);
+
+    printf("\n결과: %d %d %d\n", head->p, head->n->p, head->n->n->p);
+    
+    return 0;
+}
+
+
+
+
+--- 1. 초기 노드 선언 및 주소 확인 ---
+LOG: 노드 A, B, C 생성 및 초기값 설정.
+  [NODE STATE] a (Address: 0x7ffdc8ff21d0): p=1, n=(nil)
+  [NODE STATE] b (Address: 0x7ffdc8ff21c0): p=2, n=(nil)
+  [NODE STATE] c (Address: 0x7ffdc8ff21b0): p=3, n=(nil)
+----------------------------------------
+--- 2. 첫 번째 연결 작업: a -> b -> c -> NULL ---
+LOG: a.n = &b; b.n = &c; c.n = NULL 실행 완료.
+  [NODE STATE] a (Address: 0x7ffdc8ff21d0): p=1, n=0x7ffdc8ff21c0
+  [NODE STATE] b (Address: 0x7ffdc8ff21c0): p=2, n=0x7ffdc8ff21b0
+  [NODE STATE] c (Address: 0x7ffdc8ff21b0): p=3, n=(nil)
+----------------------------------------
+--- 3. 두 번째 연결 작업: c -> a -> b -> NULL ---
+LOG: c.n = &a; (c -> a 연결)
+  [NODE STATE] c (Address: 0x7ffdc8ff21b0): p=3, n=0x7ffdc8ff21d0
+LOG: a.n = &b; (a -> b 연결)
+  [NODE STATE] a (Address: 0x7ffdc8ff21d0): p=1, n=0x7ffdc8ff21c0
+LOG: b.n = NULL; (b에서 리스트 종료)
+  [NODE STATE] b (Address: 0x7ffdc8ff21c0): p=2, n=(nil)
+----------------------------------------
+--- 4. head 포인터 설정 및 최종 연결 상태 ---
+LOG: head = &c; (head는 노드 c를 가리킴)
+Head Address: 0x7ffdc8ff21b0
+LOG: 최종 연결 리스트의 순서: head(c) -> c.n(a) -> c.n.n(b)
+----------------------------------------
+--- 5. 최종 출력 결과 ---
+head->p (c): 3
+head->n->p (a): 1
+head->n->n->p (b): 2
+
+결과: 3 1 2
+
+
+=== Code Execution Successful ===

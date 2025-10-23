@@ -1,0 +1,142 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void set(int** arr, int* data, int rows, int cols) {
+    printf("--- set 함수 실행: 2D 배열에 데이터 채우기 ---\n");
+    for (int i = 0; i < rows * cols; ++i) {
+        // 인덱스 계산
+        // (i + 1) / rows: 몫 (row 인덱스에 기여)
+        // (i + 1) % cols: 나머지 (col 인덱스)
+        // ((i + 1) / rows) % rows: 최종 row 인덱스
+        
+        int row_idx = ((i + 1) / rows) % rows;
+        int col_idx = (i + 1) % cols;
+        
+        // 데이터 대입
+        arr[row_idx][col_idx] = data[i];
+
+        // 로그 출력: 어떤 data[i] 값이 arr[row_idx][col_idx]에 들어갔는지
+        printf("i=%d: data[%d]=%d -> arr[%d][%d]\n", 
+               i, i, data[i], row_idx, col_idx);
+    }
+    printf("--- set 함수 종료 ---\n");
+}
+
+int main() {
+    int rows = 3, cols = 3, sum = 0;
+    int data[] = {5, 2, 7, 4, 1, 8, 3, 6, 9}; 
+    int** arr;
+    
+    printf("--- main 함수 시작 ---\n");
+    printf("rows=%d, cols=%d\n", rows, cols);
+    printf("data 배열: {");
+    for (int i = 0; i < rows * cols; ++i) {
+        printf("%d%s", data[i], i < rows * cols - 1 ? ", " : "");
+    }
+    printf("}\n");
+
+    // 메모리 할당
+    arr = (int**) malloc(sizeof(int*) * rows);
+    printf("2D 배열 arr의 row 포인터 %d개 메모리 할당 완료.\n", rows);
+    for (int i = 0; i < rows; i++) {
+        arr[i] = (int*) malloc(sizeof(int) * cols);
+        printf("arr[%d]에 col %d개(int) 메모리 할당 완료.\n", i, cols);
+    }
+
+    // set 함수 호출
+    set(arr, data, rows, cols);
+    
+    // 최종 배열 내용 확인 로그
+    printf("\n--- set 함수 실행 후 2D 배열 arr의 최종 상태 ---\n");
+    for (int i = 0; i < rows; i++) {
+        printf("arr[%d]: {", i);
+        for (int j = 0; j < cols; j++) {
+            printf("%d%s", arr[i][j], j < cols - 1 ? ", " : "");
+        }
+        printf("}\n");
+    }
+    
+    // 합계 계산
+    printf("\n--- 최종 합계 계산 과정 ---\n");
+    for (int i = 0; i < rows * cols; i++) {
+        // 인덱스 계산: i / rows (row), i % cols (col)
+        int row_idx = i / rows;
+        int col_idx = i % cols;
+        
+        // 부호 결정: i가 짝수이면 1, 홀수이면 -1
+        int sign = (i % 2 == 0 ? 1 : -1);
+        int value = arr[row_idx][col_idx];
+        int term = value * sign;
+        
+        sum += term;
+        
+        // 로그 출력
+        printf("i=%d: arr[%d][%d]=%d * (%d) -> 항: %d, 누적 sum: %d\n", 
+               i, row_idx, col_idx, value, sign, term, sum);
+    }
+
+    // 메모리 해제
+    printf("\n--- 메모리 해제 ---\n");
+    for(int i=0; i<rows; i++) {
+        free(arr[i]);
+        printf("arr[%d] 메모리 해제 완료.\n", i);
+    }
+    free(arr);
+    printf("arr 포인터 메모리 해제 완료.\n");
+
+    printf("\n--- 최종 결과 ---\n");
+    printf("Final sum: %d\n", sum);
+    
+    return 0;
+}
+
+
+
+
+
+--- main 함수 시작 ---
+rows=3, cols=3
+data 배열: {5, 2, 7, 4, 1, 8, 3, 6, 9}
+2D 배열 arr의 row 포인터 3개 메모리 할당 완료.
+arr[0]에 col 3개(int) 메모리 할당 완료.
+arr[1]에 col 3개(int) 메모리 할당 완료.
+arr[2]에 col 3개(int) 메모리 할당 완료.
+--- set 함수 실행: 2D 배열에 데이터 채우기 ---
+i=0: data[0]=5 -> arr[0][1]
+i=1: data[1]=2 -> arr[0][2]
+i=2: data[2]=7 -> arr[1][0]
+i=3: data[3]=4 -> arr[1][1]
+i=4: data[4]=1 -> arr[1][2]
+i=5: data[5]=8 -> arr[2][0]
+i=6: data[6]=3 -> arr[2][1]
+i=7: data[7]=6 -> arr[2][2]
+i=8: data[8]=9 -> arr[0][0]
+--- set 함수 종료 ---
+
+--- set 함수 실행 후 2D 배열 arr의 최종 상태 ---
+arr[0]: {9, 5, 2}
+arr[1]: {7, 4, 1}
+arr[2]: {8, 3, 6}
+
+--- 최종 합계 계산 과정 ---
+i=0: arr[0][0]=9 * (1) -> 항: 9, 누적 sum: 9
+i=1: arr[0][1]=5 * (-1) -> 항: -5, 누적 sum: 4
+i=2: arr[0][2]=2 * (1) -> 항: 2, 누적 sum: 6
+i=3: arr[1][0]=7 * (-1) -> 항: -7, 누적 sum: -1
+i=4: arr[1][1]=4 * (1) -> 항: 4, 누적 sum: 3
+i=5: arr[1][2]=1 * (-1) -> 항: -1, 누적 sum: 2
+i=6: arr[2][0]=8 * (1) -> 항: 8, 누적 sum: 10
+i=7: arr[2][1]=3 * (-1) -> 항: -3, 누적 sum: 7
+i=8: arr[2][2]=6 * (1) -> 항: 6, 누적 sum: 13
+
+--- 메모리 해제 ---
+arr[0] 메모리 해제 완료.
+arr[1] 메모리 해제 완료.
+arr[2] 메모리 해제 완료.
+arr 포인터 메모리 해제 완료.
+
+--- 최종 결과 ---
+Final sum: 13
+
+
+=== Code Execution Successful ===
